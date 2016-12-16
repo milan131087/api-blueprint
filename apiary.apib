@@ -1,0 +1,1364 @@
+FORMAT: 1A
+HOST: http://appsco.com/
+
+# AppsCo API
+
+
+## REST API
+
+The REST APIs provide programmatic access to read and write Appsco data.  
+Create new dashboard, list all applications on specific dashboard, retrieve users assigned to dashboard, and more.
+
+The REST API identifies Appsco users using [OAuth 2](http://tools.ietf.org/html/rfc6749); responses are available in JSON. 
+
+Below are the documents that will help you get going with the REST APIs as quickly as possible  
+
+* [API Rate Limiting][rate limiting]
+* [HTTP Response Headers][response headers]
+
+[rate limiting]: /api/rate-limiting
+[response headers]: /api/response-headers
+
+## API Rate Limits [/api/rate-limiting]
+
+Rate limiting per access token in your control. 
+If a method allows for 15 requests per rate limit window, 
+then it allows you to make 15 requests per window per leveraged access token.  
+
+### 15 Minute Windows  
+
+Rate limits in the API are divided into 15 minute intervals.
+
+### HTTP Headers and Response Codes
+Ensure that you inspect these headers, as they provide pertinent data on where your application is at for a given rate 
+limit on the method that you just utilized. 
+
+* __X-Rate-Limit-Limit__: the rate limit ceiling for that given request
+* __X-Rate-Limit-Remaining__: the number of requests left for the 15 minute window
+* __X-Rate-Limit-Reset__: the remaining window before the rate limit resets in UTC epoch seconds
+
+When you exceeds the rate limit for a given API endpoint, the Appsco API will return an HTTP 429 “Too Many Requests”.
+
+If you hit the rate limit on a given endpoint, this is the body of the HTTP 429 message that you will see:
+
+### GET
+
+- Response 429 (application/json)
+
+        {
+            "response": {
+                "error": : "too many requests",
+                "message": "too many requests, please try later!",
+                "status": 429
+            }
+        }
+
+# Response Headers [/api]
+
+Response type will be JSON.
+Response should be returned depending on what client requests.  
+Request for type should be sent with header Content-Type/Accept header.
+
+### 405 Method Not Allowed  [GET /api/v2/request-token] 
+
+- Response 405 (application/json)
+        
+        {
+          "error": "method not allowed",
+          "message": "No route found for \"GET /api/v2/request-token\": Method Not Allowed (Allow: POST, OPTIONS)",
+          "code": 405
+        }
+
+### 401 Unauthorized [POST /api/v2/request-token]
+
+- Response 401 (application/json)
+        
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Authentication [/api/v2/request-token]
+
+To authenticate user should request token in order to get username and password.
+
+### OPTIONS
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "POST",
+            "OPTIONS"
+          ]
+        }
+
+### POST 
+
+- Request
+    - Headers
+    
+            Authorization: Basic czBvYzgzNjhnemswa2drb29rOHd3Z3NjZzRjMDhjb2tnZz
+                
+                
+- Response 403 (application/json)
+        
+        {
+          "error": "access denied",
+          "message": "Please use basic auth for this api call.",
+          "code": 403
+        }
+
+- Response 200 (application/json)
+
+        {
+          "token": "7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc"
+        }
+
+# Explore API [/api/v2]
+
+Returns all available routs. Each route is named.
+
+### OPTIONS
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET 
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+                
+- Response 403 (application/json)
+
+        {
+          "error": "access denied",
+          "message": "Please use token for api calls",
+          "code": 403
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+- Response 200 (application/json)
+
+        {
+          "versions": {
+            "v2": {
+              "dashboards": "https://www.appsco.com/api/v2/dashboards",
+              "me": "https://www.appsco.com/api/v2/me",
+              "application": "https://www.appsco.com/api/v2/applications",
+              "notifications": "https://www.appsco.com/api/v2/notifications",
+              "accounts": "https://www.appsco.com/api/v2/accounts",
+              "devices": "https://www.appsco.com/api/v2/devices",
+              "vault-cc": "https://www.appsco.com/api/v2/vault-cc",
+              "vault-identity": "https://www.appsco.com/api/v2/vault-identity",
+              "vault-login": "https://www.appsco.com/api/v2/vault",
+              "vault-passport": "https://www.appsco.com/api/v2/vault-passport",
+              "vault-secure-note": "https://www.appsco.com/api/v2/vault-secure-note",
+              "vault-software-licence": "https://www.appsco.com/api/v2/vault-software-licence"
+            }
+          }
+        }
+
+# Applications [/api/v2/applications]
+
+Returns options of all available applications
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "applications": [],
+          "meta": {
+            "total": 0,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/dashboards?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/dashboards?page=0&extended=0",
+            "pages": 0,
+            "per_page": 100,
+            "prev": "https://appsco.com/api/v2/dashboards?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/dashboards?page=1&extended=0"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Applications ID [/api/v2/applications/{application_id}]
+
+Returns appsco public application's ID
+
++ Parameters
+    + application_id (number) - ID of the Application in the form of an integer
+    
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "application": {
+            "id": 1,
+            "title": "Twitter",
+            "url": "https://twitter.com/",
+            "url_editable": false,
+            "icon_url": "https://apps.appsco.com/icon/1.png",
+            "auth_types": {
+              "unpw": "icon_unpw",
+              "none": "icon_none",
+              "item": "icon_item"
+            },
+            "plugin_data": "{\"cookie\":{\"remove\":[\"http:\\/\\/twitter.com\\/\",\"https:\\/\\/www.twitter.com\\/\"],\"rx\":[]},\"login\":[{\"url\":[\"\\/twitter.com\",\"\\/www.twitter.com\"],\"code\":\"Appsco.Claims.get(function(claims) {\\n    Appsco.Browser\\n        .type(\"#signin-email\", claims['username'])\\n        .type(\"#signin-password\", claims['password'])\\n        .uncheck(\"#remember_me\")\\n        .click('div.front-signin form.signin button[type=\"submit\"]')\\n    ;\\n});\\n\",\"rx\":[]}],\"success\":[\"a:contains(@AppsCo_Test)\"]}",
+            "self": "https://appsco.com/api/v2/applications/1"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Accounts [/api/v2/accounts]
+
+Returns all available accounts.
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "accounts": [
+            "https://appsco.com/api/v2/accounts/1",
+            "https://appsco.com/api/v2/accounts/2",
+            "https://appsco.com/api/v2/accounts/4",
+            "https://appsco.com/api/v2/accounts/5",
+            "https://appsco.com/api/v2/accounts/6",
+            "https://appsco.com/api/v2/accounts/7",
+            "https://appsco.com/api/v2/accounts/8",
+            "https://appsco.com/api/v2/accounts/9",
+            "https://appsco.com/api/v2/accounts/10",
+            "https://appsco.com/api/v2/accounts/11",
+            "https://appsco.com/api/v2/accounts/12",
+            "https://appsco.com/api/v2/accounts/13",
+            "https://appsco.com/api/v2/accounts/14",
+            "https://appsco.com/api/v2/accounts/15",
+            "https://appsco.com/api/v2/accounts/16",
+            "https://appsco.com/api/v2/accounts/17",
+            "https://appsco.com/api/v2/accounts/18",
+            "https://appsco.com/api/v2/accounts/19",
+            "https://appsco.com/api/v2/accounts/20",
+            "https://appsco.com/api/v2/accounts/21",
+            "https://appsco.com/api/v2/accounts/22",
+            "https://appsco.com/api/v2/accounts/23",
+            "https://appsco.com/api/v2/accounts/24",
+            "https://appsco.com/api/v2/accounts/25",
+            "https://appsco.com/api/v2/accounts/26",
+            "https://appsco.com/api/v2/accounts/27",
+            "https://appsco.com/api/v2/accounts/28",
+            "https://appsco.com/api/v2/accounts/29",
+            "https://appsco.com/api/v2/accounts/30"
+          ],
+          "meta": {
+            "total": 16090,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/accounts?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/accounts?page=161&extended=0",
+            "pages": 161,
+            "per_page": 100,
+            "prev": "https://appsco.com/api/v2/accounts?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/accounts?page=2&extended=0"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Accounts ID [/api/v2/accounts/{account_id}]
+
+Returns all available appsco public account's ID
+
++ Parameters
+    + account_id (number) - ID of the Account in the form of an integer
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "account": {
+            "email": "admin@appsco.com",
+            "country": "AF",
+            "name": "Appsco Admin",
+            "first_name": "Appsco",
+            "last_name": "Admin",
+            "gender": null,
+            "locale": "en",
+            "picture_url": null,
+            "username": "admin@appsco.com",
+            "roles": [
+              "ROLE_ADMIN",
+              "ROLE_WELCOME",
+              "ROLE_USER"
+            ],
+            "self": "https://appsco.com/api/v2/accounts/1"
+          },
+          "meta": {
+            "share": "https://appsco.com/api/v2/accounts/1/share"
+          }
+        }
+          
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Me [/api/v2/me]
+
+Returns appsco account options of currently logged in user
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "account": {
+            "id": 2,
+            "email": "john.doe@appsco.com",
+            "first_name": "John",
+            "last_name": "Doe",
+            "locale": "en",
+            "timezone": "Europe/Belgrade",
+            "gender": "m",
+            "country": "RS",
+            "phone": null,
+            "picture_url": "https://appsco.com/bundles/appscodashboardapproot/img/profile-avatar.png",
+            "company": null
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Dashboards [/api/v2/dashboards]
+
+Options ID's details of the current user
+
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "dashboards": [
+            "https://appsco.com/api/v2/dashboards/124",
+            "https://appsco.com/api/v2/dashboards/5"
+          ],
+          "meta": {
+            "total": 2,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/dashboards?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/dashboards?page=1&extended=0",
+            "pages": 1,
+            "per_page": 100,
+            "prev": "https://appsco.com/api/v2/dashboards?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/dashboards?page=1&extended=0"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Dashboards ID [/api/v2/dashboards/{dashboard_id}]
+
+Returns ID's details of the current user.
+
+- Parameters
+    - dashboard_id (number) - ID of the Dashboard in the form of an integer
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "dashboard": {
+            "role_id": 5,
+            "alias": "5",
+            "title": "Jonh Doe",
+            "roles": [
+              "OWNER",
+              "VIEW_GRID",
+              "SHARED"
+            ],
+            "default_dashboard": false,
+            "logo": "https://appsco.com/bundles/appscodashboardapproot/img/dashboard-logo.png",
+            "url": "https://appsco.com/5/",
+            "self": "https://appsco.com/api/v2/dashboards/5"
+          },
+          "meta": {
+            "icons": {
+              "icons": [
+                "https://appsco.com/api/v2/dashboards/5/icons/102",
+                "https://appsco.com/api/v2/dashboards/5/icons/103",
+                "https://appsco.com/api/v2/dashboards/5/icons/104",
+                "https://appsco.com/api/v2/dashboards/5/icons/411"
+              ],
+              "count": 4,
+              "self": "https://appsco.com/api/v2/dashboards/5/icons"
+            },
+            "accounts": "https://appsco.com/api/v2/dashboards/5/accounts",
+            "applications": "https://appsco.com/api/v2/dashboards/5/applications"
+          }
+        }
+
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Dashboards ID Icons [/api/v2/dashboards/{dashboard_id}/icons]
+
+Returns all available icons of the dashboards for the current user.
+
+
+- Parameters
+    - dashboard_id (number) - ID of the Dashboard in the form of an integer
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "icons": [
+            "https://appsco.com/api/v2/dashboards/5/icons/102",
+            "https://appsco.com/api/v2/dashboards/5/icons/103",
+            "https://appsco.com/api/v2/dashboards/5/icons/104",
+            "https://appsco.com/api/v2/dashboards/5/icons/411"
+          ],
+          "meta": {
+            "total": 4,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/dashboards/5/icons?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/dashboards/5/icons?page=1&extended=0",
+            "pages": 1,
+            "per_page": 100,
+            "prev": "https://appsco.com/api/v2/dashboards/5/icons?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/dashboards/5/icons?page=1&extended=0"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+# Dashboards ID Icons ID [/api/v2/dashboards/{dashboard_id}/icons/{icon_id}]
+
+Returns all available icons of the dashboards for the current user.
+
+- Parameters
+    - dashboard_id (number) - ID of the Dashboard in the form of an integer
+    - icon_id (number) - ID of the Icon in the form of an integer
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "icon": {
+            "application": "https://appsco.com/api/v2/applications/1",
+            "alias": 102,
+            "title": "Twitter Personal",
+            "auth_type": "unpw",
+            "is_configured": true,
+            "url_editable": false,
+            "icon_url": "https://apps.appsco.com/icon/1.png",
+            "url": "https://twitter.com/",
+            "images": [
+              "https://apps.appsco.com/icon/1.png"
+            ],
+            "owner": true,
+            "self": "https://appsco.com/api/v2/dashboards/5/icons/102",
+            "security": {
+              "password_strength": 77,
+              "info": {
+                "upper_case": true,
+                "lower_case": true,
+                "digits": true,
+                "special_chars": false,
+                "length8": true,
+                "length16": false,
+                "entropy": 3.1699250014423
+              },
+              "last_update": 0,
+              "score": 77
+            },
+            "claims": {
+              "username": "john.doe@appsco.com",
+              "password": "123appsco"
+            },
+            "meta": {
+              "log": "https://appsco.com/api/v2/application/98/log",
+              "autologin": "https://appsco.com/api/v2/application/98/switch",
+              "subscribers": "https://appsco.com/api/v2/application/98/subscribers",
+              "application-remove": "https://appsco.com/api/v2/application/98",
+              "plugin_go": "https://appsco.com/5/plugin/go/102"
+            }
+          }
+        }
+
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+        
+
+- Response 422 (application/json)
+
+        {
+          "error": "Unprocessable Entity",
+          "message": "Icon does not belong to dashboard[5]!",
+          "code": 422
+        }
+
+### DELETE 
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "response": {
+            "message": "Successful",
+            "code": 200
+          },
+          "meta": {
+            "icons": "https://appsco.com/api/v2/dashboards/5/icons"
+          }
+        }
+
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+        
+
+- Response 422 (application/json)
+
+        {
+          "error": "Unprocessable Entity",
+          "message": "Icon does not belong to dashboard[5]!",
+          "code": 422
+        }
+
+# Devices [/api/v2/devices]
+
+Returns all available devices.
+
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "devices": [],
+          "meta": {
+            "total": 0,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/devices?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/devices?page=0&extended=0",
+            "pages": 0,
+            "per_page": 100,
+            "prev": "https://appsco.com/api/v2/devices?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/devices?page=1&extended=0"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+        
+
+
+# Vault Credit Card [/api/v2/vault-cc]
+
+Returns all available vault credit card.
+
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "items": [
+            "https://appsco.com/api/v2/vault-cc/25"
+          ],
+          "meta": {
+            "total": 0,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/vault-cc?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/vault-cc?page=0&extended=0",
+            "pages": 0,
+            "per_page": 100,
+            "prev": "https://appsco.com/api/v2/vault-cc?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/vault-cc?page=1&extended=0"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Vault Credit Card ID [/api/v2/vault-cc/{cc_id}]
+
+Returns specific available vault credit card.
+
+- Parameters
+    - cc_id (number) - ID of the Vault Credit Card in the form of an integer
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "item": {
+            "title": "Credit Card",
+            "cardHolder": "John Doe",
+            "cardNumber": "2056025834781077",
+            "expiryDate": {
+              "date": "2018-10-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "type": "2",
+            "validFrom": {
+              "date": "2010-10-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "verificationNumber": "707",
+            "note": "",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-cc/25"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+# Vault Identity [/api/v2/vault-identity]
+
+Returns all available vault identity.
+
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "items": [
+            "https://appsco.com/api/v2/vault-identity/53"
+          ],
+          "meta": {
+            "total": 0,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/vault-identity?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/vault-identity?page=0&extended=0",
+            "pages": 0,
+            "per_page": 100,
+            "prev": "https://appsco.com/api/v2/vault-identity?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/vault-identity?page=1&extended=0"
+          }
+        }        
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+# Vault Identity ID [/api/v2/vault-identity/{identity_id}]
+
+Returns all available vault identity.
+
+
+- Parameters
+    - identity_id (number) - ID of the Vault Identity in the form of an integer
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+        
+        {
+          "item": {
+            "name": "John",
+            "firstName": "John",
+            "lastName": "Doe",
+            "birthDate": {
+              "date": "1934-01-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "sex": "m",
+            "email": "john.doe@appsco.com",
+            "company": "Company",
+            "department": "Department",
+            "jobTitle": "Job title",
+            "cell": "+381631234567",
+            "phoneBusiness": "+381631234567",
+            "phoneHome": "+381111234567",
+            "website": "http://www.company.com",
+            "note": "",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-identity/53"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+# Vault Passport [/api/v2/vault-passport]
+
+Returns all available vault passport.
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "items": [
+            "https://appsco.com/api/v2/vault-passport/8"
+          ],
+          "meta": {
+            "total": 1,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/vault-passport?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/vault-passport?page=1&extended=0",
+            "pages": 1,
+            "per_page": 100,
+            "prev": "https://appsco.com/api/v2/vault-passport?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/vault-passport?page=1&extended=0"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Vault Passport ID [/api/v2/vault-passport/{passport_id}]
+
+Returns all available vault passport items.
+
+- Parameters
+    - passport_id (number) - ID of the Vault Passport in the form of an integer
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+        
+        {
+          "item": {
+            "name": "John Doe",
+            "sex": "m",
+            "country": "RS",
+            "dateOfBirth": {
+              "date": "1934-01-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "expirationDate": {
+              "date": "1955-09-29 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "issuedDate": {
+              "date": "1938-09-16 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "issuingAuthority": "Belgrade",
+            "nationality": "Serbian",
+            "number": "0004567",
+            "note": "",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-passport/8"
+          }
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Vault Security Note [/api/v2/vault-secure-note]
+
+Returns all available vault secure note options.
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "items": [
+            "https://appsco.com/api/v2/vault-secure-note/31"
+          ],
+          "meta": {
+            "total": 1,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/vault-secure-note?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/vault-secure-note?page=1&extended=0",
+            "pages": 1,
+            "per_page": 100,
+            "prev": "https://appsco.com/api/v2/vault-secure-note?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/vault-secure-note?page=1&extended=0"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Vault Secure Note ID [/api/v2/vault-secure-note/{note_id}]
+
+Returns all available vault passport items.
+
+- Parameters
+    - note_id (number) - ID of the Vault Secure Note in the form of an integer
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+        
+        {
+          "item": {
+            "title": "Secure Note",
+            "note": "Note note note note note note note note note note note note note.",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-secure-note/31"
+          }
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+
+# Vault Software Licence [/api/v2/vault-software-licence]
+
+Returns all available vault software licence options.
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "items": [
+            "https://appsco.com/api/v2/vault-software-licence/18"
+          ],
+          "meta": {
+            "total": 1,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/vault-software-licence?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/vault-software-licence?page=1&extended=0",
+            "pages": 1,
+            "per_page": 100,
+            "prev": "https://appsco.com/api/v2/vault-software-licence?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/vault-software-licence?page=1&extended=0"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Vault Software Licence ID [/api/v2/vault-software-licence/{licence_id}]
+
+Returns all available vault software licence items.
+
+- Parameters
+    - licence_id (number) - ID of the Vault Secure Note in the form of an integer
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+        
+        {
+          "item": {
+            "name": "Software Licence",
+            "licence": "7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc",
+            "licenceKey": "7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc",
+            "numberOfLicences": 10,
+            "orderNumber": "wsk8skccoccsg00cwocwwc80skss04kkwc",
+            "orderTotal": "5",
+            "price": "2000",
+            "publisher": "Publisher",
+            "purchaseDate": {
+              "date": "2010-03-18 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "supportEmail": "support@email.com",
+            "version": "v2",
+            "website": "http://www.website.com",
+            "note": "",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-software-licence/18"
+          }
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+
+# Data Structures
+
+## Account (object)
+- email: admin@appsco.com
+- country: AF
+- name: Appsco Admin
+- first_name: Appsco
+- last_name: Admin
+- gender
+- locale: en
+- picture_url
+- username: admin@appsco.com
+- roles (object)
+    - ROLE_PARTNER
+    - ROLE_WELCOME
+    - ROLE_USER
+- self: https://appsco.com/api/v2/accounts/1
+
+## Acounts 
+- accounts (array)
+- meta (object)
+    
+
+## Meta (object)
+- total: 14866
+- page: 1
+- first: https://appsco.com/api/v2/accounts?page=1&extended=0
+- last: https://appsco.com/api/v2/accounts?page=149&extended=0
+- pages: 149
+- per_page: 100
+- prev: https://appsco.com/api/v2/accounts?page=1&extended=0
+- next: https://appsco.com/api/v2/accounts?page=2&extended=0
+
+## Accounts ID (object)
+- account (object)
+- meta (object)
+    - share: https://appsco.com/api/v2/accounts/1/share
+
+
+## Authentication
+- Token: 18z4d9giu38k44gswgsc4s4wgwc4ks0oko8sckw4kw48scg0042cgvir9cjckkwsoogswcg4wskgg4ocs8ks4gc48owcgs04ogs
