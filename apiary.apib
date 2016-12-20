@@ -262,6 +262,52 @@ Returns appsco public application's ID
           "code": 401
         }
 
+# Applications ID Switch [/api/v2/applications/{application_id}/switch]
+
++ Parameters
+    + application_id (number) - ID of the Application in the form of an integer
+    
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "POST",
+            "OPTIONS"
+          ]
+        }
+        
+### POST 
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "response": {
+            "message": "Successful",
+            "code": 200
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
 # Accounts [/api/v2/accounts]
 
 Returns all available accounts.
@@ -386,6 +432,51 @@ Returns all available appsco public account's ID
           "message": "please authenticate with your token",
           "code": 401
         }
+# Accounts ID Share [/api/v2/applications/{account_id}/share]
+
++ Parameters
+    + account_id (number) - ID of the Application in the form of an integer
+    
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "POST",
+            "OPTIONS"
+          ]
+        }
+        
+### POST 
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+
+        {
+          "response": {
+            "message": "Successful",
+            "code": 200
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
 
 # Me [/api/v2/me]
 
@@ -806,6 +897,53 @@ Returns all available vault credit card.
           "error": "unauthorized",
           "message": "please authenticate with your token",
           "code": 401
+        }
+
+### POST 
+
++ Attributes
+    + title: Credit Card (required, string) - Title
+    + cardHolder: John Doe (string) - Card holder
+    + type: Visa (array) - Type of credit card
+        + Visa
+        + MasterCard
+        + American Express
+        + Mastercard Maestro
+        + Visa Electron
+        + Other
+    + cardNumber: 2056025834781077 (string) - Card number
+    + expiryDate: 2018-10-19 00:00:00.000000 (string) - Date when the credit card expire
+    + validFrom: 2010-10-19 00:00:00.000000 (string) - Date the credit card is valid from
+    + note: Note (string) - Note
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+
+- Response 200 (application/json)
+    
+        {
+          "item": {
+            "title": "Credit Card",
+            "cardHolder": "John Doe",
+            "cardNumber": "2056025834781077",
+            "expiryDate": {
+              "date": "2018-10-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "type": "2",
+            "validFrom": {
+              "date": "2010-10-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "verificationNumber": "707",
+            "note": "",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-cc/25"
+          }
         }
 
 # Vault Credit Card ID [/api/v2/vault-cc/{cc_id}]
