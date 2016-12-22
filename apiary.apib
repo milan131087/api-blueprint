@@ -133,7 +133,7 @@ Returns all available routs. Each route is named.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
                 
 - Response 403 (application/json)
 
@@ -180,7 +180,7 @@ Returns options of all available applications
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 
 - Response 200 (application/json)
@@ -196,7 +196,7 @@ Returns options of all available applications
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -222,7 +222,7 @@ Returns options of all available applications
           "code": 401
         }
 
-# Applications ID [/api/v2/applications/{application_id}]
+# Applications ID [/api/v2/application/{application_id}]
 
 Returns appsco public application's ID
 
@@ -233,7 +233,7 @@ Returns appsco public application's ID
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -262,6 +262,34 @@ Returns appsco public application's ID
           "code": 401
         }
 
+### DELETE 
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "response": {
+            "message": "Successful",
+            "code": 200
+          },
+          "meta": {
+            "icons": "https://appsco.com/api/v2/dashboards/5/icons"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+        
+
 # Applications ID Switch [/api/v2/applications/{application_id}/switch]
 
 + Parameters
@@ -271,7 +299,7 @@ Returns appsco public application's ID
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 
 - Response 200 (application/json)
@@ -288,7 +316,7 @@ Returns appsco public application's ID
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -316,7 +344,7 @@ Returns all available accounts.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -331,7 +359,7 @@ Returns all available accounts.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -398,7 +426,7 @@ Returns all available appsco public account's ID
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -441,7 +469,7 @@ Returns all available appsco public account's ID
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 
 - Response 200 (application/json)
@@ -458,7 +486,7 @@ Returns all available appsco public account's ID
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -486,7 +514,7 @@ Returns appsco account options of currently logged in user
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -501,7 +529,7 @@ Returns appsco account options of currently logged in user
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -538,7 +566,7 @@ Options ID's details of the current user
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -553,7 +581,7 @@ Options ID's details of the current user
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -589,11 +617,26 @@ Returns ID's details of the current user.
 - Parameters
     - dashboard_id (number) - ID of the Dashboard in the form of an integer
 
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
 ### GET
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -645,11 +688,26 @@ Returns all available icons of the dashboards for the current user.
 - Parameters
     - dashboard_id (number) - ID of the Dashboard in the form of an integer
 
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
 ### GET
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -680,6 +738,66 @@ Returns all available icons of the dashboards for the current user.
           "code": 401
         }
 
+### POST
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "icon": {
+            "application": "https://appsco.com/api/v2/applications/1",
+            "alias": 102,
+            "title": "Twitter Personal",
+            "auth_type": "unpw",
+            "is_configured": true,
+            "url_editable": false,
+            "icon_url": "https://apps.appsco.com/icon/1.png",
+            "url": "https://twitter.com/",
+            "images": [
+              "https://apps.appsco.com/icon/1.png"
+            ],
+            "owner": true,
+            "self": "https://appsco.com/api/v2/dashboards/5/icons/102",
+            "security": {
+              "password_strength": 77,
+              "info": {
+                "upper_case": true,
+                "lower_case": true,
+                "digits": true,
+                "special_chars": false,
+                "length8": true,
+                "length16": false,
+                "entropy": 3.1699250014423
+              },
+              "last_update": 0,
+              "score": 77
+            },
+            "claims": {
+              "username": "john.doe@appsco.com",
+              "password": "123appsco"
+            },
+            "meta": {
+              "log": "https://appsco.com/api/v2/application/98/log",
+              "autologin": "https://appsco.com/api/v2/application/98/switch",
+              "subscribers": "https://appsco.com/api/v2/application/98/subscribers",
+              "application-remove": "https://appsco.com/api/v2/application/98",
+              "plugin_go": "https://appsco.com/5/plugin/go/102"
+            }
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
 
 # Dashboards ID Icons ID [/api/v2/dashboards/{dashboard_id}/icons/{icon_id}]
 
@@ -693,7 +811,7 @@ Returns all available icons of the dashboards for the current user.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -763,7 +881,7 @@ Returns all available icons of the dashboards for the current user.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -804,7 +922,7 @@ Returns all available devices.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -819,7 +937,7 @@ Returns all available devices.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -845,18 +963,16 @@ Returns all available devices.
           "code": 401
         }
         
+# Vault Login [/api/v2/vault]
 
-
-# Vault Credit Card [/api/v2/vault-cc]
-
-Returns all available vault credit card.
+Returns all available vault.
 
 
 ### OPTIONS
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -871,7 +987,200 @@ Returns all available vault credit card.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "items": [
+            "https://my-dev.appsco.com/api/v2/vault/127"
+          ],
+          "meta": {
+            "total": 1,
+            "page": 1,
+            "first": "https://my-dev.appsco.com/api/v2/vault?page=1&extended=0",
+            "last": "https://my-dev.appsco.com/api/v2/vault?page=1&extended=0",
+            "pages": 1,
+            "per_page": 100,
+            "prev": "https://my-dev.appsco.com/api/v2/vault?page=1&extended=0",
+            "next": "https://my-dev.appsco.com/api/v2/vault?page=1&extended=0"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+### POST
+
+- Attributes 
+    - login (Login)
+    
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "item": {
+            "name": "John Doe",
+            "username": "username",
+            "password": "password",
+            "url": "http://johndoe.com",
+            "note": "note",
+            "owner": "https://my-dev.appsco.com/api/v2/accounts/14",
+            "self": "https://my-dev.appsco.com/api/v2/vault/127"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+# Vault Login ID [/api/v2/vault/{vault_id}]
+
+Returns all available vault.
+
+- Parameters
+    - vault_id (number) - ID of the Vault Login in the form of an integer
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "item": {
+            "name": "John Doe",
+            "username": "username",
+            "password": "password",
+            "url": "http://johndoe.com",
+            "note": "note",
+            "owner": "https://my-dev.appsco.com/api/v2/accounts/14",
+            "self": "https://my-dev.appsco.com/api/v2/vault/127"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+### PATCH
+
+- Attributes 
+    - login (Login)
+    
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "item": {
+            "name": "John Doe",
+            "username": "username",
+            "password": "password",
+            "url": "http://johndoe.com",
+            "note": "note",
+            "owner": "https://my-dev.appsco.com/api/v2/accounts/14",
+            "self": "https://my-dev.appsco.com/api/v2/vault/127"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+        
+### DELETE
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "response": {
+            "message": "Successful",
+            "code": 200
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+
+# Vault Credit Card [/api/v2/vault-cc]
+
+Returns all available vault credit card.
+
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -901,25 +1210,13 @@ Returns all available vault credit card.
 
 ### POST 
 
-+ Attributes
-    + title: Credit Card (required, string) - Title
-    + cardHolder: John Doe (string) - Card holder
-    + type: Visa (array) - Type of credit card
-        + Visa
-        + MasterCard
-        + American Express
-        + Mastercard Maestro
-        + Visa Electron
-        + Other
-    + cardNumber: 2056025834781077 (string) - Card number
-    + expiryDate: 2018-10-19 00:00:00.000000 (string) - Date when the credit card expire
-    + validFrom: 2010-10-19 00:00:00.000000 (string) - Date the credit card is valid from
-    + note: Note (string) - Note
+- Attributes
+    - credit card (Credit Card)
 
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
     
@@ -957,7 +1254,7 @@ Returns specific available vault credit card.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -972,7 +1269,7 @@ Returns specific available vault credit card.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -1007,6 +1304,73 @@ Returns specific available vault credit card.
           "code": 401
         }
 
+### PATCH 
+
+- Attributes
+    - credit card (Credit Card)
+    
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+    
+        {
+          "item": {
+            "title": "Credit Card",
+            "cardHolder": "John Doe",
+            "cardNumber": "2056025834781077",
+            "expiryDate": {
+              "date": "2018-10-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "type": "2",
+            "validFrom": {
+              "date": "2010-10-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "verificationNumber": "707",
+            "note": "",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-cc/25"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+### DELETE
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "response": {
+            "message": "Successful",
+            "code": 200
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
 
 # Vault Identity [/api/v2/vault-identity]
 
@@ -1017,7 +1381,7 @@ Returns all available vault identity.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -1032,7 +1396,7 @@ Returns all available vault identity.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -1060,35 +1424,15 @@ Returns all available vault identity.
           "code": 401
         }
 
+### POST
 
-# Vault Identity ID [/api/v2/vault-identity/{identity_id}]
-
-Returns all available vault identity.
-
-
-- Parameters
-    - identity_id (number) - ID of the Vault Identity in the form of an integer
-
-### OPTIONS
+- Attributes
+    - identity (Identity)
+    
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
-
-- Response 200 (application/json)
-
-        {
-          "allow": [
-            "GET",
-            "OPTIONS"
-          ]
-        }
-
-### GET
-- Request
-    - Headers
-    
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
         
@@ -1126,15 +1470,19 @@ Returns all available vault identity.
         }
 
 
-# Vault Passport [/api/v2/vault-passport]
+# Vault Identity ID [/api/v2/vault-identity/{identity_id}]
 
-Returns all available vault passport.
+Returns all available vault identity.
+
+
+- Parameters
+    - identity_id (number) - ID of the Vault Identity in the form of an integer
 
 ### OPTIONS
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -1149,7 +1497,137 @@ Returns all available vault passport.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "item": {
+            "name": "John",
+            "firstName": "John",
+            "lastName": "Doe",
+            "birthDate": {
+              "date": "1934-01-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "sex": "m",
+            "email": "john.doe@appsco.com",
+            "company": "Company",
+            "department": "Department",
+            "jobTitle": "Job title",
+            "cell": "+381631234567",
+            "phoneBusiness": "+381631234567",
+            "phoneHome": "+381111234567",
+            "website": "http://www.company.com",
+            "note": "",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-identity/53"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+### PATCH
+
+- Attributes
+    - identity (Identity)
+    
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "item": {
+            "name": "John",
+            "firstName": "John",
+            "lastName": "Doe",
+            "birthDate": {
+              "date": "1934-01-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "sex": "m",
+            "email": "john.doe@appsco.com",
+            "company": "Company",
+            "department": "Department",
+            "jobTitle": "Job title",
+            "cell": "+381631234567",
+            "phoneBusiness": "+381631234567",
+            "phoneHome": "+381111234567",
+            "website": "http://www.company.com",
+            "note": "",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-identity/53"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+### DELETE
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "response": {
+            "message": "Successful",
+            "code": 200
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+
+# Vault Passport [/api/v2/vault-passport]
+
+Returns all available vault passport.
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -1177,33 +1655,15 @@ Returns all available vault passport.
           "code": 401
         }
 
-# Vault Passport ID [/api/v2/vault-passport/{passport_id}]
+### POST 
 
-Returns all available vault passport items.
-
-- Parameters
-    - passport_id (number) - ID of the Vault Passport in the form of an integer
-
-### OPTIONS
+- Attributes
+   - passport (Passport)
+    
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
-
-- Response 200 (application/json)
-
-        {
-          "allow": [
-            "GET",
-            "OPTIONS"
-          ]
-        }
-
-### GET
-- Request
-    - Headers
-    
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
         
@@ -1244,15 +1704,20 @@ Returns all available vault passport items.
           "code": 401
         }
 
-# Vault Security Note [/api/v2/vault-secure-note]
 
-Returns all available vault secure note options.
+
+# Vault Passport ID [/api/v2/vault-passport/{passport_id}]
+
+Returns all available vault passport items.
+
+- Parameters
+    - passport_id (number) - ID of the Vault Passport in the form of an integer
 
 ### OPTIONS
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -1267,7 +1732,146 @@ Returns all available vault secure note options.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "item": {
+            "name": "John Doe",
+            "sex": "m",
+            "country": "RS",
+            "dateOfBirth": {
+              "date": "1934-01-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "expirationDate": {
+              "date": "1955-09-29 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "issuedDate": {
+              "date": "1938-09-16 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "issuingAuthority": "Belgrade",
+            "nationality": "Serbian",
+            "number": "0004567",
+            "note": "",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-passport/8"
+          }
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+### PATCH 
+
+- Attributes
+    - passport (Passport)
+    
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "item": {
+            "name": "John Doe",
+            "sex": "m",
+            "country": "RS",
+            "dateOfBirth": {
+              "date": "1934-01-19 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "expirationDate": {
+              "date": "1955-09-29 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "issuedDate": {
+              "date": "1938-09-16 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "issuingAuthority": "Belgrade",
+            "nationality": "Serbian",
+            "number": "0004567",
+            "note": "",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-passport/8"
+          }
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+### DELETE
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "response": {
+            "message": "Successful",
+            "code": 200
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+
+# Vault Security Note [/api/v2/vault-secure-note]
+
+Returns all available vault secure note options.
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -1295,33 +1899,15 @@ Returns all available vault secure note options.
           "code": 401
         }
 
-# Vault Secure Note ID [/api/v2/vault-secure-note/{note_id}]
+### POST 
 
-Returns all available vault passport items.
-
-- Parameters
-    - note_id (number) - ID of the Vault Secure Note in the form of an integer
-
-### OPTIONS
+- Attributes
+    - secure note (Secure Note)
+    
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
-
-- Response 200 (application/json)
-
-        {
-          "allow": [
-            "GET",
-            "OPTIONS"
-          ]
-        }
-
-### GET
-- Request
-    - Headers
-    
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
         
@@ -1344,15 +1930,18 @@ Returns all available vault passport items.
 
 
 
-# Vault Software Licence [/api/v2/vault-software-licence]
+# Vault Secure Note ID [/api/v2/vault-secure-note/{note_id}]
 
-Returns all available vault software licence options.
+Returns all available vault passport items.
+
+- Parameters
+    - note_id (number) - ID of the Vault Secure Note in the form of an integer
 
 ### OPTIONS
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -1367,7 +1956,106 @@ Returns all available vault software licence options.
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "item": {
+            "title": "Secure Note",
+            "note": "Note note note note note note note note note note note note note.",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-secure-note/31"
+          }
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+### PATCH 
+
+- Attributes
+    - secure note (Secure Note)
+    
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "item": {
+            "title": "Secure Note",
+            "note": "Note note note note note note note note note note note note note.",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-secure-note/31"
+          }
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+### DELETE
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "response": {
+            "message": "Successful",
+            "code": 200
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+
+# Vault Software Licence [/api/v2/vault-software-licence]
+
+Returns all available vault software licence options.
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
 
@@ -1394,42 +2082,23 @@ Returns all available vault software licence options.
           "message": "please authenticate with your token",
           "code": 401
         }
+        
+### POST 
+- Attributes
+    - software licence (Software Licence)
 
-# Vault Software Licence ID [/api/v2/vault-software-licence/{licence_id}]
-
-Returns all available vault software licence items.
-
-- Parameters
-    - licence_id (number) - ID of the Vault Secure Note in the form of an integer
-
-### OPTIONS
 - Request
     - Headers
     
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
-
-- Response 200 (application/json)
-
-        {
-          "allow": [
-            "GET",
-            "OPTIONS"
-          ]
-        }
-
-### GET
-- Request
-    - Headers
-    
-            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
 
 - Response 200 (application/json)
         
         {
           "item": {
             "name": "Software Licence",
-            "licence": "7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc",
-            "licenceKey": "7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc",
+            "licence": "Licence",
+            "licenceKey": "7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc",
             "numberOfLicences": 10,
             "orderNumber": "wsk8skccoccsg00cwocwwc80skss04kkwc",
             "orderTotal": "5",
@@ -1459,44 +2128,217 @@ Returns all available vault software licence items.
 
 
 
+# Vault Software Licence ID [/api/v2/vault-software-licence/{licence_id}]
+
+Returns all available vault software licence items.
+
+- Parameters
+    - licence_id (number) - ID of the Vault Secure Note in the form of an integer
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+
+### GET
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "item": {
+            "name": "Software Licence",
+            "licence": "Licence",
+            "licenceKey": "7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc",
+            "numberOfLicences": 10,
+            "orderNumber": "wsk8skccoccsg00cwocwwc80skss04kkwc",
+            "orderTotal": "5",
+            "price": "2000",
+            "publisher": "Publisher",
+            "purchaseDate": {
+              "date": "2010-03-18 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "supportEmail": "support@email.com",
+            "version": "v2",
+            "website": "http://www.website.com",
+            "note": "",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-software-licence/18"
+          }
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+### PATCH 
+- Attributes
+    - software licence (Software Licence)
+    
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "item": {
+            "name": "Software Licence",
+            "licence": "Licence",
+            "licenceKey": "7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc",
+            "numberOfLicences": 10,
+            "orderNumber": "wsk8skccoccsg00cwocwwc80skss04kkwc",
+            "orderTotal": "5",
+            "price": "2000",
+            "publisher": "Publisher",
+            "purchaseDate": {
+              "date": "2010-03-18 00:00:00.000000",
+              "timezone_type": 3,
+              "timezone": "Europe/Oslo"
+            },
+            "supportEmail": "support@email.com",
+            "version": "v2",
+            "website": "http://www.website.com",
+            "note": "",
+            "owner": "https://appsco.com/api/v2/accounts/262",
+            "self": "https://appsco.com/api/v2/vault-software-licence/18"
+          }
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+### DELETE
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "response": {
+            "message": "Successful",
+            "code": 200
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+
+
+
 # Data Structures
 
-## Account (object)
-- email: admin@appsco.com
-- country: AF
-- name: Appsco Admin
-- first_name: Appsco
-- last_name: Admin
-- gender
-- locale: en
-- picture_url
-- username: admin@appsco.com
-- roles (object)
-    - ROLE_PARTNER
-    - ROLE_WELCOME
-    - ROLE_USER
-- self: https://appsco.com/api/v2/accounts/1
+## Software Licence (object)
 
-## Acounts 
-- accounts (array)
-- meta (object)
-    
-
-## Meta (object)
-- total: 14866
-- page: 1
-- first: https://appsco.com/api/v2/accounts?page=1&extended=0
-- last: https://appsco.com/api/v2/accounts?page=149&extended=0
-- pages: 149
-- per_page: 100
-- prev: https://appsco.com/api/v2/accounts?page=1&extended=0
-- next: https://appsco.com/api/v2/accounts?page=2&extended=0
-
-## Accounts ID (object)
-- account (object)
-- meta (object)
-    - share: https://appsco.com/api/v2/accounts/1/share
+- name: Software Licence (string) - Name of software licence
+- licence: Licence (string) - Name of licence
+- licenceKey: 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc (string) - Key of licence
+- numberOfLicences: 10 (string) - Number of purchased licences
+- orderNumber: wsk8skccoccsg00cwocwwc80skss04kkwc (string) - Number of order
+- orderTotal: 5 (string) - Total of orders
+- price: 21200 (string) - Price of order
+- publisher: Publisher (string) - Name of publisher
+- purchaseDate: 2010-03-18 00:00:00.000000 (date) - Date of purchased order
+- supportEmail: support@email.com (string) - Email of support
+- version: v2 (string) - Version of software
+- website: http://www.website.com (string) - Website
 
 
-## Authentication
-- Token: 18z4d9giu38k44gswgsc4s4wgwc4ks0oko8sckw4kw48scg0042cgvir9cjckkwsoogswcg4wskgg4ocs8ks4gc48owcgs04ogs
+## Secure Note (object)
+
+- title: Secure note (string) - Title of secure note
+- note: Some note (string) - Text of note
+
+
+## Passport (object)
+
+- name: John Doe (string) - Name in passport
+- sex: m (array) - Gender
+    - f
+- country: RS (string) - Country in passport
+- dateOfBirth: 1934-01-19 00:00:00.000000 (date) - Date of birth
+- expirationDate: 1955-09-29 00:00:00.000000 (date) - Date of passport expiration
+- issuedDate: 938-09-16 00:00:00.000000 (date) - Date when passport was issued
+- issuingAuthority: MUP (string) - Authority that issued the passport
+- nationality: Serbian (string) - Nationality of person in passport
+- number: 0004567 (string) - Number of passport
+- note: Some note (string) - Text of note
+
+
+## Identity (object)
+
+- name: John Doe (string) - Name
+- firstName: John (string) - First name
+- lastName: Doe (string) - Last name
+- birthDate: 1934-01-19 00:00:00.000000 (date) - Date of birth
+- sex: m (array) - Gender, male (m) or female (f)
+    - f
+- email: john.doe@appsco.com (string) - Email
+- company: Company (string) - Name of company
+- department: Department (string) - Department of company
+- jobTitle: Job title (string) - Job title in company
+- cell: +381631234567 (string) - Cell phone number
+- phoneBusiness: +381631234567 (string) - Company phone number
+- phoneHome: +381111234567 (string) - Home phone number
+- website: http://www.company.com (string) - Website address
+- note: Some note (string) - Text of note
+
+## Credit Card (object)
+
+- title: Credit Card (required, string) - Title
+- cardHolder: John Doe (string) - Card holder
+- type: Visa (array) - Type of credit card
+    - Visa
+    - MasterCard
+    - American Express
+    - Mastercard Maestro
+    - Visa Electron
+    - Other
+- cardNumber: 2056025834781077 (string) - Card number
+- expiryDate: 2018-10-19 00:00:00.000000 (date) - Date when the credit card expire
+- validFrom: 2010-10-19 00:00:00.000000 (date) - Date the credit card is valid from
+- note: Note (string) - Text of note
+
+
+## Login (object)
+
+- name: John Doe (string) - Name of login
+- username: username (string) - Login username
+- password: password (string) - Login password
+- url: http://johndoe.com (string) - Login url
+- note: Some note (string) - Text of note
