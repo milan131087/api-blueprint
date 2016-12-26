@@ -112,7 +112,7 @@ To authenticate user should request token in order to get username and password.
 - Response 200 (application/json)
 
         {
-          "token": "7hw0fqyydegws8sg40s40wgco04sgoog404oookk4ooccgsws2pxjq4rkeccg0co0wsk8skccoccsg00cwocwwc80skss04kkwc"
+          "token": "7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc"
         }
 
 # Explore API [/api/v2]
@@ -201,7 +201,37 @@ Returns options of all available applications
 - Response 200 (application/json)
 
         {
-          "applications": [],
+          "applications": [
+            "https://my-dev.appsco.com/api/v2/applications/1",
+            "https://my-dev.appsco.com/api/v2/applications/2",
+            "https://my-dev.appsco.com/api/v2/applications/3",
+            "https://my-dev.appsco.com/api/v2/applications/6",
+            "https://my-dev.appsco.com/api/v2/applications/7",
+            "https://my-dev.appsco.com/api/v2/applications/8",
+            "https://my-dev.appsco.com/api/v2/applications/13",
+            "https://my-dev.appsco.com/api/v2/applications/14",
+            "https://my-dev.appsco.com/api/v2/applications/15",
+            "https://my-dev.appsco.com/api/v2/applications/16",
+            "https://my-dev.appsco.com/api/v2/applications/17",
+            "https://my-dev.appsco.com/api/v2/applications/18",
+            "https://my-dev.appsco.com/api/v2/applications/19",
+            "https://my-dev.appsco.com/api/v2/applications/20",
+            "https://my-dev.appsco.com/api/v2/applications/21",
+            "https://my-dev.appsco.com/api/v2/applications/23",
+            "https://my-dev.appsco.com/api/v2/applications/24",
+            "https://my-dev.appsco.com/api/v2/applications/25",
+            "https://my-dev.appsco.com/api/v2/applications/26",
+            "https://my-dev.appsco.com/api/v2/applications/27",
+            "https://my-dev.appsco.com/api/v2/applications/28",
+            "https://my-dev.appsco.com/api/v2/applications/31",
+            "https://my-dev.appsco.com/api/v2/applications/32",
+            "https://my-dev.appsco.com/api/v2/applications/33",
+            "https://my-dev.appsco.com/api/v2/applications/34",
+            "https://my-dev.appsco.com/api/v2/applications/37",
+            "https://my-dev.appsco.com/api/v2/applications/38",
+            "https://my-dev.appsco.com/api/v2/applications/39",
+            "https://my-dev.appsco.com/api/v2/applications/40"
+          ],
           "meta": {
             "total": 0,
             "page": 1,
@@ -2342,3 +2372,15 @@ Returns all available vault software licence items.
 - password: password (string) - Login password
 - url: http://johndoe.com (string) - Login url
 - note: Some note (string) - Text of note
+
+
+## Application (object)
+
+- id: 1 (number) - Id of application
+- title: Twitter (string) - Name of application
+- url: https://twitter.com/ (string) - Url of application
+- url_editable: false (boolean) - If url of applications is editable
+- icon_url: https://apps.appsco.com/icon/1.png (string) - Url of application's icon
+- auth_types: unpw (array) - Application authorization type
+  - none
+  - item
