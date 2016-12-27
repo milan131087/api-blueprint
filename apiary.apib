@@ -1,5 +1,5 @@
 FORMAT: 1A
-HOST: http://appsco.com/
+HOST: https://appsco.com/
 
 # AppsCo API
 
@@ -573,7 +573,7 @@ Returns appsco account options of currently logged in user
             "timezone": "Europe/Belgrade",
             "gender": "m",
             "country": "RS",
-            "phone": null,
+            "phone": "+381112233445",
             "picture_url": "https://appsco.com/bundles/appscodashboardapproot/img/profile-avatar.png",
             "company": null
           }
@@ -586,6 +586,910 @@ Returns appsco account options of currently logged in user
           "message": "please authenticate with your token",
           "code": 401
         }
+
+### PUT
+
+- Attributes
+    - me (Me)
+    
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "account": {
+            "id": 2,
+            "email": "john.doe@appsco.com",
+            "first_name": "John",
+            "last_name": "Doe",
+            "locale": "en",
+            "timezone": "Europe/Belgrade",
+            "gender": "m",
+            "country": "RS",
+            "phone": null,
+            "picture_url": "https://appsco.com/bundles/appscodashboardapproot/img/profile-avatar.png",
+            "company": null
+          }
+        }
+
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+
+# Me Profile Image [/api/v2/me/profile-image]
+
+Returns appsco account profile image of currently logged in user
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "POST",
+            "OPTIONS"
+          ]
+        }
+        
+### POST
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        []
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+- Response 422 (application/json)
+
+        {
+          "error": "Unprocessable Entity",
+          "message": "Must be one file",
+          "code": 422
+        }
+
+# Me Partner [/api/v2/me/partner]
+
+Returns appsco account partner of currently logged in user
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        []
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Me Transfer Token [/api/v2/me/transfer-token]
+
+Returns appsco account transfer token of currently logged in user
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "transfer_token": "3vylp2o8j1icwswkccsgoogccss0w8040wo04c0ww4w8",
+          "expiration": {
+            "date": "2016-12-28 12:58:56.000000",
+            "timezone_type": 3,
+            "timezone": "Europe\/Oslo"
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Me Icons [/api/v2/me/icons]
+
+Returns appsco account icons of currently logged in user
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "icons": [
+            "https://appsco.com/api/v2/dashboards/551/icons/1962"
+          ],
+          "meta": {
+            "total": 1,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/me/icons?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/me/icons?page=1&extended=0",
+            "pages": 1,
+            "per_page": 6,
+            "prev": "https://appsco.com/api/v2/me/icons?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/me/icons?page=1&extended=0"
+          }
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Me Application Icon [/api/v2/me/icons/{applicationIcon}]
+
+Returns appsco account application icon of currently logged in user
+
+- Parameters
+    - applicationIcon (number) - ID of the Application Icon in the form of an integer
+
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "icon": {
+            "application": "https://appsco.com/api/v2/applications/1",
+            "alias": 102,
+            "title": "Twitter Personal",
+            "auth_type": "unpw",
+            "is_configured": true,
+            "url_editable": false,
+            "icon_url": "https://apps.appsco.com/icon/1.png",
+            "url": "https://twitter.com/",
+            "images": [
+              "https://apps.appsco.com/icon/1.png"
+            ],
+            "owner": true,
+            "self": "https://appsco.com/api/v2/dashboards/5/icons/102",
+            "security": {
+              "password_strength": 77,
+              "info": {
+                "upper_case": true,
+                "lower_case": true,
+                "digits": true,
+                "special_chars": false,
+                "length8": true,
+                "length16": false,
+                "entropy": 3.1699250014423
+              },
+              "last_update": 0,
+              "score": 77
+            },
+            "claims": {
+              "username": "john.doe@appsco.com",
+              "password": "123appsco"
+            },
+            "meta": {
+              "log": "https://appsco.com/api/v2/application/98/log",
+              "autologin": "https://appsco.com/api/v2/application/98/switch",
+              "subscribers": "https://appsco.com/api/v2/application/98/subscribers",
+              "application-remove": "https://appsco.com/api/v2/application/98",
+              "plugin_go": "https://appsco.com/5/plugin/go/102"
+            }
+          }
+        }
+
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+- Response 403 (application/json)
+
+        {
+          "error": "access denied",
+          "message": "Icon does not belong to current user",
+          "code": 403
+        }
+
+# Me Applications [/api/v2/me/applications]
+
+Returns appsco account applications of currently logged in user
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "applications": [
+            "https://appsco.com/api/v2/me/applications/1391",
+            "https://appsco.com/api/v2/me/applications/1392",
+            "https://appsco.com/api/v2/me/applications/1493",
+            "https://appsco.com/api/v2/me/applications/1494"
+          ],
+          "meta": {
+            "total": 4,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/me/applications?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/me/applications?page=1&extended=0",
+            "pages": 1,
+            "per_page": 6,
+            "prev": "https://appsco.com/api/v2/me/applications?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/me/applications?page=1&extended=0"
+          }
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+# Me Applications ID [/api/v2/me/applications/{application}]
+
+Returns appsco account applications of currently logged in user
+
+- Parameters
+    - application (number) - ID of the Application in the form of an integer
+
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "application": "https://appsco.com/api/v2/applications/2",
+          "title": "Facebook",
+          "auth_type": "item",
+          "url_editable": false,
+          "application_url": "https://appsco.com/genericIcons/f.png",
+          "url": "https://www.facebook.com/",
+          "images": [
+            "https://apps.appsco.com/icon/2.png"
+          ]
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+- Response 403 (application/json)
+
+        {
+          "error": "access denied",
+          "message": "Application does not belong to current user",
+          "code": 403
+        }
+
+# Me Two Factor Authentication [/api/v2/me/2fa]
+
+Returns appsco account two factor authentication of currently logged in user
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocafc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "enabled": false
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+- Response 403 (application/json)
+
+        {
+          "error": "access denied",
+          "message": "Access Denied.",
+          "code": 403
+        }
+
+### POST
+
+- Attributes
+    - googleAuthenticatorSecret: SKDSSBRQR2VXCCVK (string) - Goolge authenticator secret key
+    - key: 348271 (number) - Two factor authentication key
+    
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "success":true
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+- Response 403 (application/json)
+
+        {
+          "error": "access denied",
+          "message": "Access Denied.",
+          "code": 403
+        }
+
+### DELETE
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "success":true
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+        
+- Response 403 (application/json)
+
+        {
+          "error": "access denied",
+          "message": "Access Denied.",
+          "code": 403
+        }
+
+# Me Two Factor Authentication Codes [/api/v2/me/2fa/codes]
+
+Returns appsco account two factor authentication codes of currently logged in user
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        []
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+        
+- Response 403 (application/json)
+
+        {
+          "error": "access denied",
+          "message": "Access Denied.",
+          "code": 403
+        }
+
+# Me Change Password [/api/v2/me/change-password]
+
+Returns appsco account change password of currently logged in user
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "POST",
+            "OPTIONS"
+          ]
+        }
+        
+### POST
+
+- Attributes
+    - oldPassword: 123pass (string) - Old password
+    - plainPassword_first: pass456 (string) - New password first time
+    - plainPassword_second: pass456 (string) - New password second time
+    
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "success":true
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+        
+- Response 422 (application/json)
+
+        {
+          "error":"Unprocessable Entity",
+          "message":"ERROR: Invalid old password\n",
+          "code":422
+        }
+
+# Me Authorized Apps [/api/v2/me/authorized-apps]
+
+Returns appsco account two factor authorized applications of currently logged in user
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "authorizations": [
+            {
+              "created": {
+                "date": "2015-09-04 08:58:21.000000",
+                "timezone_type": 3,
+                "timezone": "Europe/Oslo"
+              },
+              "scopes": "profile_read",
+              "title": "SomeApp",
+              "description": "SomeApp",
+              "icon_url": null,
+              "active": true,
+              "website": "http://someapp.org",
+              "revoke": "https://appsco.com/api/v2/me/authorized-apps/4"
+            },
+            {
+              "created": {
+                "date": "2015-09-09 07:23:06.000000",
+                "timezone_type": 3,
+                "timezone": "Europe/Oslo"
+              },
+              "scopes": "profile_read",
+              "title": "SomeApp",
+              "description": null,
+              "icon_url": "http://accounts.mysiteshop.com/apple-touch-icon-114-precomposed.png",
+              "active": true,
+              "website": "http://someapp.org",
+              "revoke": "https://appsco.com/api/v2/me/authorized-apps/7"
+            }
+          ],
+          "meta": {
+            "total": 2,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/me/authorized-apps?page=1&extended=1",
+            "last": "https://appsco.com/api/v2/me/authorized-apps?page=1&extended=1",
+            "pages": 1,
+            "per_page": 6,
+            "prev": "https://appsco.com/api/v2/me/authorized-apps?page=1&extended=1",
+            "next": "https://appsco.com/api/v2/me/authorized-apps?page=1&extended=1"
+          }
+        }
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+        
+- Response 403 (application/json)
+
+        {
+          "error": "access denied",
+          "message": "Access Denied.",
+          "code": 403
+        }
+
+# Me Authorized Apps [/api/v2/me/authorized-apps/{oauthApp}]
+
+Delete appsco account oauth of currently logged in user
+
+- Parameters
+    - oauthApp (number) - ID of the Authorized application in the form of an integer
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "DELETE",
+            "OPTIONS"
+          ]
+        }
+        
+### DELETE
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "success": true
+        }
+
+        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+
+- Response 403 (application/json)
+
+        {
+          "error": "access denied",
+          "message": "Access Denied.",
+          "code": 403
+        }
+
+# Me Log [/api/v2/me/log]
+
+Returns appsco account logs of currently logged in user
+
+### OPTIONS
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+
+        {
+          "allow": [
+            "GET",
+            "OPTIONS"
+          ]
+        }
+        
+### GET
+
+- Request
+    - Headers
+    
+            Authorization: Token 7hw0fqyydegws8sg40s40wgco04sgoog404oookk4oocc
+
+- Response 200 (application/json)
+        
+        {
+          "log": [
+            {
+              "account": {
+                "display_name": "John Doe",
+                "email": "john.doe@appsco.com",
+                "image": "https://appsco.com/public/pic/122"
+              },
+              "created_at": {
+                "date": "2016-12-27 15:20:46.000000",
+                "timezone_type": 3,
+                "timezone": "Europe/Oslo"
+              },
+              "ip": "217.65.152.132",
+              "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.100 Safari/537.36",
+              "type": "user_oauth_app_authorization_revoked",
+              "data": {
+                "roles": [
+                  "ROLE_SCOPE_API_PROFILE_VIEW"
+                ],
+                "account": "John Doe",
+                "created_at": {
+                  "date": "2015-09-09 07:23:06.000000",
+                  "timezone_type": 3,
+                  "timezone": "Europe/Oslo"
+                },
+                "expires": {
+                  "date": "2015-09-10 07:23:06.000000",
+                  "timezone_type": 3,
+                  "timezone": "Europe/Oslo"
+                },
+                "client_id": "378uiicsisysgs0808g8k8coogg8ws8sg80s8okowkssc",
+                "title": "SomeApp",
+                "website": "http://someapp.org",
+                "description": null
+              }
+            },
+            {
+              "account": {
+                "display_name": "John Doe",
+                "email": "john.doe@appsco.com",
+                "image": "https://my-dev.appsco.com/public/pic/122"
+              },
+              "created_at": {
+                "date": "2016-12-27 15:05:34.000000",
+                "timezone_type": 3,
+                "timezone": "Europe/Oslo"
+              },
+              "ip": "217.65.152.132",
+              "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.100 Safari/537.36",
+              "type": "user_changed_password",
+              "data": []
+            },
+            {
+              "account": {
+                "display_name": "John Doe",
+                "email": "john.doe@appsco.com",
+                "image": "https://my-dev.appsco.com/public/pic/122"
+              },
+              "created_at": {
+                "date": "2016-12-27 12:45:13.000000",
+                "timezone_type": 3,
+                "timezone": "Europe/Oslo"
+              },
+              "ip": "217.65.152.132",
+              "user_agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/54.0.2840.100 Safari/537.36",
+              "type": "user_profile_info_changed",
+              "data": {
+                "picture_url": {
+                  "from": "https://lh6.googleusercontent.com/-815AUb_ow_o/AAAAAAAAAI/AAAAAAAABU/Rjbo9QHIk2U/photo.jpg",
+                  "to": "https://appsco.com/public/pic/122"
+                }
+              }
+            }
+          ],
+          "meta": {
+            "total": 5,
+            "page": 1,
+            "first": "https://appsco.com/api/v2/me/log?page=1&extended=0",
+            "last": "https://appsco.com/api/v2/me/log?page=1&extended=0",milos
+            "pages": 1,
+            "per_page": 100,
+            "prev": "https://appsco.com/api/v2/me/log?page=1&extended=0",
+            "next": "https://appsco.com/api/v2/me/log?page=1&extended=0"
+          }
+        }        
+- Response 401 (application/json)
+
+        {
+          "error": "unauthorized",
+          "message": "please authenticate with your token",
+          "code": 401
+        }
+        
+- Response 403 (application/json)
+
+        {
+          "error": "access denied",
+          "message": "Access Denied.",
+          "code": 403
+        }
+
 
 # Dashboards [/api/v2/dashboards]
 
@@ -897,6 +1801,14 @@ Returns all available icons of the dashboards for the current user.
           "code": 401
         }
         
+- Response 403 (application/json)
+
+        {
+          "error": "access denied",
+          "message": "Access Denied.",
+          "code": 403
+        }
+
 
 - Response 422 (application/json)
 
@@ -2384,3 +3296,16 @@ Returns all available vault software licence items.
 - auth_types: unpw (array) - Application authorization type
   - none
   - item
+
+## Me (object)
+
+- id: 14 (number) - Owner's ID
+- email: john.doe@appsco.com (string) - Emaile of account's owner
+- first_name: John (string) - First name of account's owner
+- last_name: Doe (string) - Last name of account's owner
+- timezone: Europe/Belgrade (array) - Available timezones 
+- gender: Male (array) - Gender
+    - Female
+- country: RS (array) - Available countries 
+- phone: +381112233445 (string) - Phone number of account's owner
+- picture_url: https://appsco.com/bundles/appscodashboardapproot/img/profile-avatar.png (string) - Picture url of account's owner
