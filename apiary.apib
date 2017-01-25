@@ -12,7 +12,7 @@ OAuth Request code in order to retrieve token for loggedin user.
     Use client id and scope in order to request equivalent token.
     Redirect uri can be used for redirect response.
     System will return code which you can later use to retrieve access_token.
-    To retrieve token use code and basic authentication using your app credentials (client_id, client_secret).
+    
 
 # Dashboard
     
@@ -57,7 +57,8 @@ Shared Application represents instance of application that is assigned to the us
 # Request Token [/api/v2/request-token]
 
     In order to retrieve token user should first perform OAuth request which will provide code.
-    Code is used after that to retrieve token.
+    Code is used after that to retrieve token. 
+    To retrieve token use code and basic authentication using your app credentials (`client_id`, `client_secret`).
 
 ### Exchange code and application credentials for token [POST] 
 
@@ -128,7 +129,7 @@ Shared Application represents instance of application that is assigned to the us
     Returns dashboard details.
 
 - Parameters
-    - dashboard_role (number) - ID of the Dashboard Role
+    - dashboard_role: 551 (number) - ID of the Dashboard Role
 
 - Attributes (Dashboard Model)
 
@@ -150,7 +151,7 @@ Shared Application represents instance of application that is assigned to the us
     List all accounts that have shared application on the dashboard.
 
 - Parameters
-    - dashboard_role (number) - ID of the Dashboard role
+    - dashboard_role: 551 (number) - ID of the Dashboard role
 
 ### Retrieve dashboard accounts [GET]
 - Request
@@ -169,7 +170,7 @@ Shared Application represents instance of application that is assigned to the us
     Return all dashboard applications.
 
 - Parameters
-    - dashboard_role (number) - ID of the Dashboard role
+    - dashboard_role: 551 (number) - ID of the Dashboard role
 
 ### Retrieve dashboard applications [GET]
 
@@ -185,10 +186,10 @@ Shared Application represents instance of application that is assigned to the us
 
 # List of Application instances on dashboard [/api/v2/dashboards/{dashboard_role}/icons]
 
-Returns all available application instances (icons) of the specific dashboard role.
+    Returns all available application instances (icons) of the specific dashboard role.
 
 - Parameters
-    - dashboard_role (number) - ID of the Dashboard role
+    - dashboard_role: 551 (number) - ID of the Dashboard role
 
 ### Retrieve icons [GET]
 - Request
@@ -202,7 +203,28 @@ Returns all available application instances (icons) of the specific dashboard ro
         - meta (Paging)
 
 ### Create application instance [POST]
+    
+    This call will also fire Modify application instance claims [PATCH] if you add username, password or note.
+    
 - Request
+    - Attributes (Add app)
+    - Headers
+    
+            Authorization: token {{TOKEN}}
+ 
+- Response 200 (application/json)
+    - Attributes
+        - icon (Application Icon Model)
+
+# Dashboard Application [/api/v2/dashboards/{dashboard_id}/icons/{icon_id}/application]
+
+- Parameters
+    - dashboard_id: 551 (number) - ID of the Dashboard in the form of an integer
+    - icon_id: 247155 (number) - ID of the Icon in the form of an integer
+
+### Modify application instance claims [PATCH]
+- Request
+    - Attributes (Setup app claims)
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -211,16 +233,16 @@ Returns all available application instances (icons) of the specific dashboard ro
     - Attributes
         - icon (Application Icon Model)
 
+
 # Dashboard Application instance [/api/v2/dashboards/{dashboard_id}/icons/{icon_id}]
 
-Returns all available application instances for the current dashboard user.
+    Return and update application instance for the current dashboard user.
 
 - Parameters
-    - dashboard_id (number) - ID of the Dashboard in the form of an integer
-    - icon_id (number) - ID of the Icon in the form of an integer
+    - dashboard_id: 551 (number) - ID of the Dashboard in the form of an integer
+    - icon_id: 247155 (number) - ID of the Icon in the form of an integer
 
 ### Retrieve application instance [GET]
-
 - Request
     - Headers
     
@@ -231,7 +253,6 @@ Returns all available application instances for the current dashboard user.
         - icon (Application Icon Model)
 
 ### Modify application instance claims [PATCH]
-
 - Request
     - Attributes (Setup claims)
     - Headers
@@ -245,7 +266,6 @@ Returns all available application instances for the current dashboard user.
 ### Remove application instance from the dashboard [DELETE] 
 
     This call will also log the user changes for the Application.
-
 - Request
     - Headers
     
@@ -274,9 +294,8 @@ Return AppsCo user account information.
         - account (AppsCo Identity Model)
         
 ### Update account [PUT]
-    
 - Request
-    - Attributes (Me)        
+    - Attributes (Setup me)        
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -290,7 +309,6 @@ Return AppsCo user account information.
     Return profile image of currently logged in user.
         
 ### Setup account profile image [POST]
-
 - Request
     - Headers
     
@@ -353,7 +371,7 @@ Return AppsCo user account information.
     Returns AppsCo account application instance of currently logged in user.
 
 - Parameters
-    - applicationIcon (number) - ID of the Application Icon in the form of an integer
+    - applicationIcon: 247155 (number) - ID of the Application Icon in the form of an integer
        
 ### Retrieve application instance [GET]
 
@@ -387,7 +405,7 @@ Return AppsCo user account information.
     Returns AppsCo account application of currently logged in user.
 
 - Parameters
-    - application (number) - ID of the Application in the form of an integer
+    - application: 2512 (number) - ID of the Application in the form of an integer
         
 ### Retrieve specific application's information [GET]
 
@@ -415,7 +433,6 @@ Return AppsCo user account information.
         - enabled (boolean)
         
 ### Setup two factor authentication [POST]
-
 - Attributes
     - googleAuthenticatorSecret: SKDSSBRQR2VXCCVK (string) - Goolge authenticator secret key
     - key: 348271 (number) - Two factor authentication key
@@ -430,7 +447,6 @@ Return AppsCo user account information.
         - enabled: true (boolean)   
 
 ### Turn off two factor authentication [DELETE]
-
 - Request
     - Headers
     
@@ -445,7 +461,6 @@ Return AppsCo user account information.
     Returns AppsCo account two factor authentication recovery codes of currently logged in user
         
 ### Retrieve two-factor recovery codes [GET]
-
 - Request
     - Headers
     
@@ -459,11 +474,7 @@ Return AppsCo user account information.
     AppsCo account change password of currently logged in user.
         
 ### Setup new password for my account [POST]
-
-- Attributes
-    - oldPassword (string) - Old password
-    - newPassword (string) - New password first time
-
+- Attributes (Setup password)
 - Request
     - Headers
     
@@ -478,7 +489,6 @@ Return AppsCo user account information.
     Return AppsCo account two-factor authorized applications of currently logged in user.
  
 ### Retrieve authorization's information [GET]
-
 - Request
     - Headers
     
@@ -497,7 +507,6 @@ Return AppsCo user account information.
     - oauthApp (number) - ID of the Authorized application in the form of an integer
         
 ### Remove authorization of application  [DELETE]
-
 - Request
     - Headers
     
@@ -512,7 +521,6 @@ Return AppsCo user account information.
     Return account logs of currently logged in user.
         
 ### Retrieve logs [GET]
-
 - Request
     - Headers
     
@@ -543,10 +551,9 @@ Return AppsCo user account information.
     Return Appsco application information on the user's dashboard. 
 
 - Parameters
-    - application (number) - ID of the Application in the form of an integer
+    - application: 2 (number) - ID of the Application in the form of an integer
 
 ### Retrieve all information about application [GET]
-
 - Request
     - Headers
     
@@ -556,8 +563,7 @@ Return AppsCo user account information.
     - Attributes
         - application (Application)
 
-### Remove single application from dashboard [DELETE] 
-
+### Remove single application from dashboard [DELETE]
 - Request
     - Headers
     
@@ -574,11 +580,10 @@ Return AppsCo user account information.
     Change AppsCo application login type. 
     
 - Parameters
-    - application (number) - ID of the Application in the form of an integer
+    - application: 2 (number) - ID of the Application in the form of an integer
     
         
 ### Switch application login type [POST]
-
 - Request
     - Headers
     
@@ -593,10 +598,9 @@ Return AppsCo user account information.
     Return AppsCo application logs. 
     
 - Parameters
-    - application (number) - ID of the Application in the form of an integer
+    - application: 2 (number) - ID of the Application in the form of an integer
        
 ### Retrieve logs for application [GET] 
-
 - Request
     - Headers
     
@@ -607,15 +611,14 @@ Return AppsCo user account information.
         - log (array[Log Model])
         - meta (Paging)
         
-# Application's Subscribers [/api/v2/application/{application_id}/subscribers]
+# Application's Subscribers [/api/v2/application/{application}/subscribers]
     
     Return AppsCo application subscribers for a currently loged user.
     
 - Parameters
-    - application_id (number) - ID of the Application in the form of an integer
+    - application: 2 (number) - ID of the Application in the form of an integer
        
 ### Retrieve subscribers for application [GET] 
-
 - Request
     - Headers
     
@@ -626,8 +629,7 @@ Return AppsCo user account information.
         - accounts (array[string])
         - meta (Paging)
 
-### Delete specific subscriber [DELETE] 
-
+### Delete specific subscriber [DELETE]
 - Request
     - Headers
     
@@ -642,7 +644,6 @@ Return AppsCo user account information.
     Return AppsCo notifications for a currently loged in user. 
     
 ### Retrieve notifications [GET]
-
 - Request
     - Headers
     
@@ -671,7 +672,7 @@ Return AppsCo user account information.
     Return AppsCo account information. 
 
 - Parameters
-    - account_id (number) - ID of the Account in the form of an integer
+    - account_id: 41 (number) - ID of the Account in the form of an integer
 
 ### Retrieve account [GET]
 - Request
@@ -689,12 +690,11 @@ Return AppsCo user account information.
   Share AppsCo account. 
 
 - Parameters
-    - account_id (number) - ID of the Application in the form of an integer  
+    - account_id: 41 (number) - ID of the Application in the form of an integer  
        
 ### Share application instance [POST] 
-
 - Attributes
-    - icon - Dashboard's icon that you want to share
+    - icon (string) - Dashboard's icon that you want to share
     
 - Request
     - Headers
@@ -711,7 +711,6 @@ Return AppsCo user account information.
   Return AppsCo vault items of currently loged in user.
 
 ### Retrieve vault items [GET]
-
 - Request
     - Headers
     
@@ -723,22 +722,21 @@ Return AppsCo user account information.
         - meta (Paging)
 
 ### Create new vault item [POST]
-    
 - Request
+    - Attributes (Setup vault login)
     - Headers
     
             Authorization: token {{TOKEN}}
 
 - Response 200 (application/json)
-    - Attributes
-        - item (Login)
+    - Attributes (Login)
         
 # Vault Item [/api/v2/vault/{vault_id}]
 
   Return Appsco specific vault item.   
   
 - Parameters
-    - vault_id (number) - ID of the Vault Login in the form of an integer
+    - vault_id: 127 (number) - ID of the Vault Login in the form of an integer
 
 ### Retrieve vault item [GET]
 - Request
@@ -751,8 +749,8 @@ Return AppsCo user account information.
         - item (Login)
     
 ### Update vault item [PATCH]
-    
 - Request
+    - Attributes (Setup vault login)   
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -762,7 +760,6 @@ Return AppsCo user account information.
         - item (Login)       
      
 ### Remove single vault item [DELETE]
-
 - Request
     - Headers
     
@@ -788,8 +785,8 @@ Return AppsCo user account information.
         - meta (Paging)
 
 ### Add credit card [POST] 
-
 - Request
+    - Attributes (Setup Credit Card)
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -804,7 +801,7 @@ Return AppsCo user account information.
   Return AppsCo specific credi card. 
 
 - Parameters
-    - cc_id (number) - ID of the Vault Credit Card in the form of an integer
+    - cc_id: 36 (number) - ID of the Vault Credit Card in the form of an integer
 
 ### Retrieve credit card [GET]
 - Request
@@ -817,8 +814,8 @@ Return AppsCo user account information.
         - item (Credit Card)
        
 ### Update credit card [PATCH] 
-    
 - Request
+    - Attributes (Setup Credit Card)
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -828,7 +825,6 @@ Return AppsCo user account information.
         - item (Credit Card) 
     
 ### Remove credit card [DELETE]
-
 - Request
     - Headers
     
@@ -855,6 +851,7 @@ Return AppsCo user account information.
 
 ### Create new identitiy [POST]
 - Request
+    - Attributes (Setup Identity)
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -868,7 +865,7 @@ Return AppsCo user account information.
   Return AppsCo vault identity. 
 
 - Parameters
-    - identity_id (number) - ID of the Vault Identity in the form of an integer
+    - identity_id: 48 (number) - ID of the Vault Identity in the form of an integer
 
 ### Retrieve identity [GET]
 - Request
@@ -882,6 +879,7 @@ Return AppsCo user account information.
         
 ### Update identity [PATCH]
 - Request
+    - Attributes (Setup Identity)
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -918,6 +916,7 @@ Return AppsCo user account information.
 
 ### Add a new passport [POST] 
 - Request
+    - Attributes (Setup Passport)
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -931,7 +930,7 @@ Return AppsCo user account information.
   Return AppsCo specific vault passport. 
 
 - Parameters
-    - passport_id (number) - ID of the Vault Passport in the form of an integer
+    - passport_id: 28 (number) - ID of the Vault Passport in the form of an integer
 
 ### Retrieve passport [GET]
 - Request
@@ -945,6 +944,7 @@ Return AppsCo user account information.
 
 ### Update passport [PATCH]
 - Request
+    - Attributes (Setup Passport)
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -981,6 +981,7 @@ Return AppsCo user account information.
 
 ### Create security note [POST]
 - Request
+    - Attributes (Setup Secure Note)
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -994,7 +995,7 @@ Return AppsCo user account information.
   Return Appsco security note. 
 
 - Parameters
-    - note_id (number) - ID of the Vault Secure Note in the form of an integer
+    - note_id: 23 (number) - ID of the Vault Secure Note in the form of an integer
 
 ## Retrieve security note [GET]
 - Request
@@ -1008,6 +1009,7 @@ Return AppsCo user account information.
 
 ### Update security note [PATCH] 
 - Request
+    - Attributes (Setup Secure Note)
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -1044,6 +1046,7 @@ Return AppsCo user account information.
         
 ### Add software licence [POST]
 - Request
+    - Attributes (Setup Software Licence)
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -1058,7 +1061,7 @@ Return AppsCo user account information.
   Return AppsCo specific software licence. 
 
 - Parameters
-    - licence_id (number) - ID of the Vault Secure Note in the form of an integer
+    - licence_id: 12 (number) - ID of the Vault Secure Note in the form of an integer
 
 ### Retrieve software licence [GET]
 - Request
@@ -1072,6 +1075,7 @@ Return AppsCo user account information.
 
 ### Update software licence [PATCH]
 - Request
+    - Attributes (Setup Software Licence)
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -1150,7 +1154,10 @@ Return AppsCo user account information.
               },
     - last_update (string) - When is it last updated
     - score (number) - Overall score
-- claims (Setup claims) - Claims based on auth type
+- claims (object) - Claims based on auth type
+    - username (string) - User's username for application
+    - password (string) - User's password for application
+    - note (string) - User's note for application
 - meta (object)
     - log (string) - Log of all the actions on application
     - autologin (string) - Switch authentication types between form fill and autologin
@@ -1158,10 +1165,23 @@ Return AppsCo user account information.
     - `application-remove` (string) - Remove application
     - `plugin_go` (string) - Attempt login
 
+## Setup password (object)
+- change_password[oldPassword] (string) - Old password
+- change_password[newPassword][plainPassword][first] (string) - New password first type
+- change_password[newPassword][plainPassword][second] (string) - New password second type
+
+
+## Add app (object)
+- application[resource] (string, required) - Application route
+
 ## Setup claims (object)
-- username (string) - User's username for application
-- password (string) - User's password for application
-- note (string) - User's note for application
+- icon_claims[username] (string) - User's username for application
+- icon_claims[password] (string) - User's password for application
+- icon_claims[note] (string) - User's note for application
+
+## Setup app claims (object)
+- configure_application[title] (string) - Application title 
+- configure_application[url] (string) - Application url
 
 ## Software Licence (object)
 - name - Name of software licence
@@ -1177,14 +1197,34 @@ Return AppsCo user account information.
 - version - Version of software
 - website - Website
 
+## Setup Software Licence (object)
+- vault_software_license[name] (string, required) - Software licence name
+- vault_software_license[licenceKey] - Software licence key
+- vault_software_license[licence] - Software licence number
+- vault_software_license[version] - Software licence version
+- vault_software_license[publisher] - Publisher of software licence
+- vault_software_license[supportEmail] - Software licence support email 
+- vault_software_license[website] - Software licence website
+- vault_software_license[price] - Software licence price
+- vault_software_license[orderNumber] - Software licence number of orders
+- vault_software_license[numberOfLicences] - Software number of licence
+- vault_software_license[orderTotal] - Total order of licence
+- vault_software_license[note] - Note text
+- `vault_software_license[purchaseDate][day]` - Purchased day of software licence
+- `vault_software_license[purchaseDate][month]` - Purchased month of software licence
+- `vault_software_license[purchaseDate][year]` - Purchased year of software licence
+
 ## Secure Note (object)
 - title - Title of secure note
 - note - Text of note
 
+## Setup Secure Note (object)
+- vault_secure_note[title] (string, required) - Note title
+- vault_secure_note[note] - Note text
+
 ## Passport (object)
 - name - Name in passport
 - sex (array) - Gender
-
 - country - Country in passport
 - dateOfBirth - Date of birth
 - expirationDate - Date of passport expiration
@@ -1194,6 +1234,23 @@ Return AppsCo user account information.
 - number - Number of passport
 - note - Text of note
 
+## Setup Passport (object)
+- vault_passport[name] (string, required) - Name of passport vault
+- vault_passport[number] (number) - Passport number
+- vault_passport[nationality] - Passport nationality
+- vault_passport[issuingAuthority] - Passport issuing authority
+- vault_passport[note] - Note
+- vault_passport[country] - Country
+- vault_passport[sex] - Gender
+- `vault_passport[dateOfBirth][day]` - Day of birth
+- `vault_passport[dateOfBirth][month]` - Month of birth
+- `vault_passport[dateOfBirth][year]` - Year of birth
+- `vault_passport[issuedDate][day]` - Passport issued day
+- `vault_passport[issuedDate][month]` - Passport issued month
+- `vault_passport[issuedDate][year]` - Passport issued year
+- `vault_passport[expirationDate][day]` - Passport expiration day
+- `vault_passport[expirationDate][month]` - Passport expiration month
+- `vault_passport[expirationDate][year]` - Passport expiration year
 
 ## Identity (object)
 - name - Name
@@ -1211,6 +1268,21 @@ Return AppsCo user account information.
 - website - Website address
 - note - Text of note
 
+## Setup Identity (object)
+- vault_identities[name] (string, required) - Identity name
+- vault_identities[firstName] (string, required) - First name
+- vault_identities[lastName] (string, required) - Last name
+- vault_identities[sex] - Gender
+- vault_identities[cell] - Cell phone number
+- vault_identities[email] - Email address
+- vault_identities[company] - Company name
+- vault_identities[jobTitle] - Job title
+- vault_identities[department] - Department 
+- vault_identities[phoneHome] - Home phone number
+- vault_identities[phoneBusiness] - Business phone number
+- vault_identities[website] - Business website
+- vault_identities[note] - Note
+
 ## Credit Card (object)
 - title (required, string) - Title
 - cardHolder - Card holder
@@ -1220,6 +1292,19 @@ Return AppsCo user account information.
 - validFrom - Date the credit card is valid from
 - note - Text of note
 
+## Setup Credit Card (object)
+- vault_cc[title] (string, required)- Title
+- vault_cc[cardHolder] - Name on credit card
+- vault_cc[cardNumber] (number, required) - Has to be valid card number 
+- vault_cc[verificationNumber] (number, required) - Has to be valid verification number
+- vault_cc[note] - Note
+- vault_cc[type] (number) - Type of credit card
+- `vault_cc[expiryDate][day]` (number)- Expiry day on credit card
+- `vault_cc[expiryDate][month]` (number) - Expiry month on credit card
+- `vault_cc[expiryDate][year]` (number) - Expiry year on credit card
+- `vault_cc[validFrom][day]` (number) - Until valid day on credit card
+- `vault_cc[validFrom][month]` (number) - Until valid mont on credit card
+- `vault_cc[validFrom][year]` (number) - Until valid year on credit card
 
 ## Login (object)
 - name - Name of login
@@ -1228,6 +1313,12 @@ Return AppsCo user account information.
 - url - Login url
 - note - Text of note
 
+## Setup vault login (object)
+- vault_login[name] (string) - Vault item name
+- vault_login[url] (string) - Vault item url
+- vault_login[username] (string) - Vault item username
+- vault_login[password] (string) - Vault item password
+- vault_login[note] (string) - Vault item note
 
 ## Application (object)
 - id (number) - Id of application
@@ -1247,6 +1338,14 @@ Return AppsCo user account information.
 - country (array) - Available countries 
 - phone - Phone number of account's owner
 - picture_url - Picture url of account's owner
+
+## Setup me (object)
+- profile[first_name] (string) - User's first name
+- profile[last_name] (string) - User's last name
+- profile[timezone] (string) - Timezone
+- profile[country] (string) - User's country
+- profile[phone] (string) - User's phone number
+- profile[gender] (string) - User's gender male/female
 
 ## Company Model (object)
 - name (string) - Company Name
