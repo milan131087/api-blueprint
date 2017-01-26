@@ -233,14 +233,32 @@ Shared Application represents instance of application that is assigned to the us
     - Attributes
         - icon (Application Icon Model)
 
+# Application Instances [/api/v2/dashboards/{dashboard_id}/icons]
 
-# Dashboard Application instance [/api/v2/dashboards/{dashboard_id}/icons/{icon_id}]
+    Return and update application instance for the current dashboard user.
+
+- Parameters
+    - dashboard_id: 551 (number) - ID of the Dashboard in the form of an integer
+
+### Retrieve application instances [GET]
+- Request
+    - Headers
+    
+            Authorization: token {{TOKEN}}
+
+- Response 200 (application/json)
+    - Attributes
+        - icons (array[string])
+        - meta (Paging)
+
+# Application Instance [/api/v2/dashboards/{dashboard_id}/icons/{icon_id}]
 
     Return and update application instance for the current dashboard user.
 
 - Parameters
     - dashboard_id: 551 (number) - ID of the Dashboard in the form of an integer
     - icon_id: 247155 (number) - ID of the Icon in the form of an integer
+
 
 ### Retrieve application instance [GET]
 - Request
@@ -309,14 +327,23 @@ Return AppsCo user account information.
     Return profile image of currently logged in user.
         
 ### Setup account profile image [POST]
-- Request
+- Attributes
+    - file - The image file
+    
+- Request (multipart/form-data)
     - Headers
     
             Authorization: token {{TOKEN}}
+            
+    - Body    
+    
+            -----BOUNDARY
+                Content-Disposition: form-data; name="file"; filename="image.jpg"
+                Content-Type: image/jpeg
+            -----BOUNDARY
 
 - Response 200 (application/json)
-    - Attributes
-        - account (AppsCo Identity Model)
+    - Attributes (array[])
 
 # Account Partner [/api/v2/me/partner]
 
@@ -354,7 +381,7 @@ Return AppsCo user account information.
 
     Returns AppsCo account application instances of currently logged in user, regardles of the dashboard.
         
-### Retrieve all application instances [GET]
+### Retrieve all application instances/icons [GET]
 
 - Request
     - Headers
@@ -616,7 +643,7 @@ Return AppsCo user account information.
     Return AppsCo application subscribers for a currently loged user.
     
 - Parameters
-    - application: 2 (number) - ID of the Application in the form of an integer
+    - application: 2512 (number) - ID of the Application in the form of an integer
        
 ### Retrieve subscribers for application [GET] 
 - Request
@@ -631,6 +658,8 @@ Return AppsCo user account information.
 
 ### Delete specific subscriber [DELETE]
 - Request
+    - Attributes
+        - account: https://appsco.com/api/v2/accounts/10 (string) - Subscriber's account
     - Headers
     
             Authorization: token {{TOKEN}}
@@ -685,7 +714,7 @@ Return AppsCo user account information.
         - account (AppsCo Identity Model)
 
         
-# Share Accounts [/api/v2/applications/{account_id}/share]
+# Share Accounts [/api/v2/accounts/{account_id}/share]
 
   Share AppsCo account. 
 
@@ -694,7 +723,7 @@ Return AppsCo user account information.
        
 ### Share application instance [POST] 
 - Attributes
-    - icon (string) - Dashboard's icon that you want to share
+    - icon: https://appsco.com/api/v2/dashboards/551/icons/247155 (string) - Dashboard's icon that you want to share
     
 - Request
     - Headers
