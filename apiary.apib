@@ -1305,6 +1305,17 @@ Return AppsCo specific software licence.
     + Attributes
         + orgunit (Model OrgUnit)
 
+### Update organization unit [PATCH]
++ Request
+    + Attributes (Setup OrgUnit)
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes
+        + orgunit (Model OrgUnit)
+
 ### Remove organization unit [DELETE]
 + Request
     + Headers
@@ -1312,8 +1323,45 @@ Return AppsCo specific software licence.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
+    + Attributes (OrgUnit Delete Response)
+    
+
+# Company OrgUnit Applications [/api/v2/companies/{company_id}/org-units/{orgunit_id}/applications]
+
+  Return AppsCo Company OrgUnits applications for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `orgunit_id`: 44 (number) - ID of the Company OrgUnit in the form of an integer
+
+### Add application company orgunit  [POST]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
     + Attributes
-        + response (Response App Model)
+        + applications (array[])
+
+# Company OrgUnit Roles [/api/v2/companies/{company_id}/org-units/{orgunit_id}/roles]
+
+  Return AppsCo Company OrgUnits accounts for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `orgunit_id`: 44 (number) - ID of the Company OrgUnit in the form of an integer
+
+### Add accounts company orgunit  [POST]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes
+        + `company_roles` (array[])
+
 
 
 # Company Domains [/api/v2/companies/{company_id}/domains]
@@ -1857,7 +1905,7 @@ Return AppsCo specific software licence.
         + active_integrations (array[Directory Integrations Active])
 
 
-# Company Directory Mappings [/api/v2/companies/{company_id}/integrations/active/{integrationActive}/mappings]
+# Company Directory Integration Mappings [/api/v2/companies/{company_id}/integrations/active/{integrationActive}/mappings]
 
     Return AppsCo Company directory mappings for currently logged in user.
 
@@ -1886,7 +1934,7 @@ Return AppsCo specific software licence.
     + Attributes (Directory Fetch Mappings)
 
 
-# Company Directory Mapping [/api/v2/companies/{company_id}/integrations/active/{integrationActive}/mappings/{integrationMapping}]
+# Company Directory Integration Mapping [/api/v2/companies/{company_id}/integrations/active/{integrationActive}/mappings/{integrationMapping}]
 
     Return AppsCo Company directory mapping for currently logged in user.
 
@@ -1923,7 +1971,81 @@ Return AppsCo specific software licence.
 
 + Response 200 (application/json)
     + Attributes (Role Success Response)
+ 
+# Company Directory Invitation [/api/v2/companies/{company_id}/invitation]
+
+    Return AppsCo Company invitations for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+
+### Return company invitations [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes 
+        + invitations (array[])
+        + meta (Paging)
+
+### Create company invitations [POST]
++ Request
+    + Attributes (Setup Company Invitation)
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Create Company Invitation)
         
+
+
+# Company Directory Resend Invitation [/api/v2/companies/{company_id}/invitation/{invitation}/resend]
+
+    Resend AppsCo Company invitation for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `invitation`: 73925b4e-250b-11e7-854f-0242d77b14e5 - ID of the Company invitation in the form of an integer
+
+### Resend company invitation [PATCH]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company Resend Invitation)
+
+
+# Company Directory Invitation [/api/v2/companies/{company_id}/invitation/{invitation}]
+
+    Return AppsCo Company invitation for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `invitation`: 73925b4e-250b-11e7-854f-0242d77b14e5 - ID of the Company invitation in the form of an integer
+
+### Return company invitation [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company Resend Invitation)
+
+### Remove company invitation [DELETE]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company Resend Invitation)
+
 
 
 # Data Structures
@@ -2735,5 +2857,56 @@ Return AppsCo specific software licence.
 
 ## Setup mapping (object)
 + `company_role`: https://my-dev.appsco.com/api/v2/companies/16/directory/roles/622
+
+## Company Resend Invitation (object)
++ alias
++ company (Company) 
++ email
++ `first_name`
++ `last_name`
++ `created_at` (DateTime Model)
++ `resent_at` (DateTime Model)
++ `resent_count` (number)
++ self
+
+## Create Company Invitation (object)
++ invitation (Company Resend Invitation)
++ role 
+
+## Setup Company Invitation (object)
++ `invitation[first_name]`
++ `invitation[last_name]`
++ `invitation[email]`
+
+## OrgUnit Delete Response (object)
++ id (number)
++ `dashboard_roles` (array)
++ email 
++ timezone
++ country 
++ `created_at` (DateTime Model)
++ name
++ enabled (boolean)
++ `first_name`
++ `last_name`
++ gender
++ `last_login` (DateTime Model)
++ locale
++ phone
++ `picture_url`
++ username
++ roles (Dashboard Roles, fixed-type)
++ `display_name`
++ `profile_options` (object)
+    + public (boolean)
++ partner (boolean)
++ companies (object)
+    + company (array[Company])
+    + icons 
+    + company_admin (boolean)
++ `org_units` (array[OrgUnits])
++ meta (object)
+    + share
++ self
 
 ## Directory Role (object)
