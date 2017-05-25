@@ -2046,6 +2046,66 @@ Return AppsCo specific software licence.
 + Response 200 (application/json)
     + Attributes (Company Resend Invitation)
 
+# Company Settings [/api/v2/companies/{company_id}/settings]
+
+    Update AppsCo Company settings for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+
+### Update company settings [GET]
++ Request
+    + Attributes (Setup Company Settings)
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company Model)
+
+
+# Company Branding [/api/v2/companies/{company_id}/branding]
+
+    Update AppsCo Company branding for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+
+### Update company branding [PATCH]
++ Request
+    + Attributes (Setup Company Branding)
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company Model)
+
+
+# Company Logo [/api/v2/companies/{company_id}/logo]
+
+    Update AppsCo Company logo for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+
+### Update company logo [POST]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+            
+    + Body
+
+            -----WebKitFormBoundary7Lk1ieut0jQaBl3L
+                Content-Disposition: form-data; name="file"; filename="example_img.png"
+                Content-Type: image/png
+            -----WebKitFormBoundary7Lk1ieut0jQaBl3L--
+
+
++ Response 200 (application/json)
+    + Attributes (Company Model)
+
 
 
 # Data Structures
@@ -2908,5 +2968,14 @@ Return AppsCo specific software licence.
 + meta (object)
     + share
 + self
+
+## Setup Company Settings (object)
++ `company_settings[name]`
++ `company_settings[contactEmail]`
++ `company_settings[billingEmail]`
+
+## Setup Company Branding (object)
++ `company_branding[primaryColor]`
++ `company_branding[secondaryColor]`
 
 ## Directory Role (object)
