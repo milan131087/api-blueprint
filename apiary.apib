@@ -440,6 +440,61 @@ Returns AppsCo account application instances of currently logged in user, regard
     + Attributes
         + icons (array[string])
         + meta (Paging)
+        
+# Application Instances Personal [/api/v2/me/icons/personal]
+
+Returns AppsCo account application personal instances/icons currently logged in user
+
+### Retrieve personal application instances/icons [GET]
+
++ Request
+    + Headers
+
+            Authorization: Token absdef12345
+
++ Response  200 (application/json)
+    + Attributes
+        + icons (array[string])
+        + meta (Paging)
+
+
+# Application Instances Shared With Me [/api/v2/me/icons/shared-with-me]
+
+Returns AppsCo account application instances shared with company
+
+### Retrieve all application instances/icons [GET]
+
++ Request
+    + Headers
+
+            Authorization: Token absdef12345
+
++ Response  200 (application/json)
+    + Attributes
+        + icons (array[string])
+        + meta (Paging)
+
+
+# Application Instances Shared With Me Company [/api/v2/me/icons/shared-with-me-company/{company}]
+
+Returns AppsCo account application instances shared with currently logged in user, regardles of the dashboard.
+
++ Parameters
+    + company (number) - ID of the company in the form of an integer
+
+
+### Retrieve application instances/icons shared with company [GET]
+
++ Request
+    + Headers
+
+            Authorization: Token absdef12345
+
++ Response  200 (application/json)
+    + Attributes
+        + icons (array[string])
+        + meta (Paging)
+
 
 # Account Application instance [/api/v2/me/icons/{applicationIcon}]
 
@@ -574,9 +629,11 @@ Return AppsCo account two-factor authorized applications of currently logged in 
 
 Delete AppsCo account oauth application of currently logged in user.
 
-### Remove authorization of application  [DELETE]
 + Parameters
     + oauthApp (number) - ID of the Authorized application in the form of an integer
+
+### Remove authorization of application  [DELETE]
+
 + Request
     + Headers
 
@@ -616,7 +673,7 @@ Return all available template applications.
         + applications (array[string])
         + meta (Paging)
 
-# Single Application [/api/v2/application/{application}]
+# Single Application [/api/v2/applications/{application}]
 
 Return Appsco application information on the user's dashboard.
 
@@ -644,7 +701,7 @@ Return Appsco application information on the user's dashboard.
         + meta (Meta Icons)
 
 
-# Switch Application [/api/v2/application/{application}/switch]
+# Switch Application [/api/v2/applications/{application}/switch]
 
 Change AppsCo application login type.
 
@@ -660,7 +717,7 @@ Change AppsCo application login type.
     + Attributes
         + Response (Response App Model)
 
-# Application's Log [/api/v2/application/{application}/log]
+# Application's Log [/api/v2/applications/{application}/log]
 
 Return AppsCo application logs.
 
@@ -677,7 +734,7 @@ Return AppsCo application logs.
         + log (array[Log Model])
         + meta (Paging)
 
-# Application's Subscribers [/api/v2/application/{application}/subscribers]
+# Application's Subscribers [/api/v2/applications/{application}/subscribers]
 
 Return AppsCo application subscribers for a currently loged user.
 
@@ -707,6 +764,21 @@ Return AppsCo application subscribers for a currently loged user.
 + Response  200 (application/json)
     + Attributes
         + Response (Response App Model)
+
+# Application's Track Events [/api/v2/applications/{application}/track-events]
+
+ AppsCo application track events for a currently loged user.
+
+### Retrieve application track event [GET]
++ Request
+    + Attributes (Setup Track Events)
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response  200 (application/json)
+    + Attributes (Response App Model)
+        
 
 # Notifications [/api/v2/notifications]
 
@@ -2107,6 +2179,59 @@ Return AppsCo specific software licence.
     + Attributes (Company Model)
 
 
+# Company Signup [/api/v2/companies/{company_id}/signup]
+
+    Return AppsCo Company signup for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+
+### Retrive company signup [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes
+        + items (array[])
+        + meta (Paging)
+
+# Confirm Company Signup Request [/api/v2/companies/{company_id}/signup/request/{companySignupRequest}/confirm]
+
+    Return AppsCo Company signup for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `companySignupRequest` - ID of the Company signup request
+
+### Confirm company signup request [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (OrgUnit Delete Response)
+
+
+# Delete Company Signup Request [/api/v2/companies/{company_id}/signup-request/{companySignupRequest}]
+
+    Delete AppsCo Company signup for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `companySignupRequest` - ID of the Company signup request
+
+### Delete company signup request [DELETE]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Signup Delete Response)
+
 
 # Data Structures
 
@@ -2978,4 +3103,12 @@ Return AppsCo specific software licence.
 + `company_branding[primaryColor]`
 + `company_branding[secondaryColor]`
 
+## Signup Delete Response (object)
++ email
++ createdOn
++ self
+
+## Setup Track Events (object)
++ `track_events[event_type]` (string, required)
++ `track_events[field]` (string, required)
 ## Directory Role (object)
