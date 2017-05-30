@@ -2233,6 +2233,145 @@ Return AppsCo specific software licence.
     + Attributes (Signup Delete Response)
 
 
+# Company Labels [/api/v2/companies/{company_id}/labels]
+
+    Return AppsCo Company labels for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+
+### Retrive company labels [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes
+        + company_labels (array[])
+        + meta (Paging)
+
+### Create company label [POST]
++ Request
+    + Attributes (Setup Label)
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes
+        + company_labels (array[Company Label])
+
+# Company Label [/api/v2/companies/{company_id}/label/{label}]
+
+    Return AppsCo Company label for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + label - ID of the Company label
+    
+### Retrive company label [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes
+        + company_labels (Company Label)
+        + meta (Paging)
+
+### Remove company label [DELETE]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Response App Model)
+
+
+# Company Label Company Roles [/api/v2/companies/{company_id}/label/{label}/company-roles]
+
+    Return AppsCo label company roles for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + label - ID of the Company label
+    
+### Retrive company label company roles [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes
+        + roles (array[])
+        + meta (Paging)
+
+# Company Label Company Role [/api/v2/companies/{company_id}/label/{label}/company-roles/{companyRole}]
+
+    Detach AppsCo label company roles for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + label - ID of the Company label
+    + companyRole - ID of the Company role
+    
+### Detach company label company role [DELETE]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Response App Model)
+
+
+# Company Label Company Applications [/api/v2/companies/{company_id}/label/{label}/applications]
+
+    Return AppsCo label company applications for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + label - ID of the Company label
+    
+### Retrive company label company applications [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes
+        + applications (array[])
+        + meta (Paging)
+
+
+# Company Label Company Application [/api/v2/companies/{company_id}/label/{label}/applications/{application}]
+
+    Detach AppsCo label company application for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + label - ID of the Company label
+    + application - ID of the Company application
+    
+### Detach company label company application [DELETE]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes
+        + application (Application)
+        + Response (Response App Model)
+
+
+
+
 # Data Structures
 
 ## Enabled Response (object)
@@ -3111,4 +3250,18 @@ Return AppsCo specific software licence.
 ## Setup Track Events (object)
 + `track_events[event_type]` (string, required)
 + `track_events[field]` (string, required)
+
+## Setup Label (object)
++ `company_label[name]`
+
+## Company Label (object)
++ alias
++ company (Company Model)
++ name
++ cratedAt (DateTime Model)
++ meta 
+    + `company_roles` (array[])
+    + applications (array[])
+    + self
+
 ## Directory Role (object)
