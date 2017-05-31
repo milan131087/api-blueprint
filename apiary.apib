@@ -2291,7 +2291,7 @@ Return AppsCo specific software licence.
     + Attributes (Response App Model)
 
 
-# Company Label Company Roles [/api/v2/companies/{company_id}/label/{label}/company-roles]
+# Label Company Roles [/api/v2/companies/{company_id}/label/{label}/company-roles]
 
     Return AppsCo label company roles for currently logged in user.
 
@@ -2310,7 +2310,7 @@ Return AppsCo specific software licence.
         + roles (array[])
         + meta (Paging)
 
-# Company Label Company Role [/api/v2/companies/{company_id}/label/{label}/company-roles/{companyRole}]
+# Label Company Role [/api/v2/companies/{company_id}/label/{label}/company-roles/{companyRole}]
 
     Detach AppsCo label company roles for currently logged in user.
 
@@ -2329,7 +2329,7 @@ Return AppsCo specific software licence.
     + Attributes (Response App Model)
 
 
-# Company Label Company Applications [/api/v2/companies/{company_id}/label/{label}/applications]
+# Label Company Applications [/api/v2/companies/{company_id}/label/{label}/applications]
 
     Return AppsCo label company applications for currently logged in user.
 
@@ -2349,7 +2349,7 @@ Return AppsCo specific software licence.
         + meta (Paging)
 
 
-# Company Label Company Application [/api/v2/companies/{company_id}/label/{label}/applications/{application}]
+# Label Company Application [/api/v2/companies/{company_id}/label/{label}/applications/{application}]
 
     Detach AppsCo label company application for currently logged in user.
 
@@ -2369,6 +2369,56 @@ Return AppsCo specific software licence.
         + application (Application)
         + Response (Response App Model)
 
+
+# Company Statistics Two Factor [/api/v2/companies/{company_id}/statistics/twofa]
+
+    Return AppsCo label company statistics for two factor. 
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+
+### Retrive company two factor statistics [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company TwoFa)
+
+
+# Company Statistics Licences [/api/v2/companies/{company_id}/statistics/licences]
+
+    Return AppsCo label company statistics licences. 
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+
+### Retrive company licences [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company Licences)
+
+
+# Company Statistics User Password Scores [/api/v2/companies/{company_id}/statistics/user-password-scores]
+
+    Return AppsCo label company statistics user password scores. 
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+
+### Retrive company user password scores [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company User)
 
 
 
@@ -3263,5 +3313,49 @@ Return AppsCo specific software licence.
     + `company_roles` (array[])
     + applications (array[])
     + self
+
+## Company TwoFa (object)
++ active (number)
++ inactive (number)
+
+## Company Licences (object)
++ appscoLicences (number)
++ currentLicences (number)
++ active_users (number)
+
+## Company User (object)
++ id (number)
++ `dashboard_roles` (array)
++ email 
++ timezone
++ country 
++ `created_at` (DateTime Model)
++ name
++ enabled (boolean)
++ `first_name`
++ `last_name`
++ gender
++ `last_login` (DateTime Model)
++ locale
++ phone
++ `picture_url`
++ username
++ roles (Dashboard Roles, fixed-type)
++ `display_name`
++ `profile_options` (object)
+    + public (boolean)
++ partner (boolean)
++ companies (array[Companies Array])
++ `application_scores` (array[])
+
+## Meta Share (object)
++ share
+
+## Companies Array (object)
++ company (array[Company])
+    + icons 
+    + `company_admin`
++ meta (Meta Share)
++ self
 
 ## Directory Role (object)
