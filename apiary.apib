@@ -2016,6 +2016,35 @@ Share AppsCo account.
     + Attributes (Company User)
 
 
+# Company Contacts [/api/v2/companies/{company_id}/contacts]
+
+    Return AppsCo Company contacts for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+
+### Retrive company contacts [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes
+        + contacts (array[])
+        + meta (Paging)
+
+### Create company contacts [POST]
++ Request
+    + Attributes (Setup Contacts)
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company Contacts)
+
+
 
 # Data Structures
 
@@ -2952,5 +2981,23 @@ Share AppsCo account.
     + `company_admin`
 + meta (Meta Share)
 + self
+
+## Setup Contacts (object)
++ `contact[first_name]`
++ `contact[last_name]`
++ `contact[email]`
+
+## Company Contacts (object)
++ alias
++ company - Company url 
++ account -  Account url
++ first_name
++ `last_name`
++ `display_name`
++ email
++ createdAt (DateTime Model)
++ self
++ meta
+    + `promote_to_user`
 
 ## Directory Role (object)
