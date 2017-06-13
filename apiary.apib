@@ -2045,6 +2045,93 @@ Share AppsCo account.
     + Attributes (Company Contacts)
 
 
+# Company Contact [/api/v2/companies/{company_id}/contact/{contact}]
+
+    Return AppsCo Company contact.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + contact - ID of the Company in the form of an integer
+
+### Retrive company contact [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company Contact)
+
+### Delete company contact [DELETE]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company Contact)
+
+
+# Company Contact Convert to User [/api/v2/companies/{company_id}/contact/{contact}/convert]
+
+    Convert AppsCo Company contact to user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + contact - ID of the Company in the form of an integer
+
+### Convert company contact to user [POST]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company Contact)
+
+# Company Contact Applications [/api/v2/companies/{company_id}/contact/{contact}/applications]
+
+    Return AppsCo Company contact applications.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + contact - ID of the Company in the form of an integer
+
+### Retrive company contact [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes 
+        + applications (array[])
+        + meta (Paging)
+
+
+# Import Company Contacts [/api/v2/companies/{company_id}/contacts/import]
+
+    Import AppsCo Company contacts.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+
+### Retrive company contact [POST]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
+    + Body
+
+            ------WebKitFormBoundaryWv7iqlq6qDMpd3WH 
+                Content-Disposition: form-data; name="file"; filename="example_import.csv" 
+                Content-Type: application/octet-stream 
+            ------WebKitFormBoundaryWv7iqlq6qDMpd3WH--
+            
++ Response 200 (application/json)
+    + Attributes (Contacts Import)
+
 
 # Data Structures
 
@@ -2999,5 +3086,25 @@ Share AppsCo account.
 + self
 + meta
     + `promote_to_user`
+    
+## Company Contact (object)
++ alias
++ company - Company url 
++ account (OrgUnit Delete Response)
++ first_name
++ `last_name`
++ `display_name`
++ email
++ createdAt (DateTime Model)
++ self
++ meta 
+    + `promote_to_user`
+    + applications
+
+## Contacts Import (object)
++ total (number)
++ numberOfContacts (number)
++ numberOfInvitations (number)
++ numberOfFailed (number)
 
 ## Directory Role (object)
