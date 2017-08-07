@@ -2207,9 +2207,28 @@ Share AppsCo account.
     + Attributes (Company Groups)
 
 
-# Company Groups Roles [/api/v2/companies/{company_id}/group/{group}/company_roles]
+# Delete Company Group Role [/api/v2/companies/{company_id}/group/{group}/company-roles/{companyRole}]
 
-    Return AppsCo Company groups company roles for currently logged in user.
+    Remove AppsCo Company group role for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + group - ID of the Company group in the form of an integer
+    + companyRole - ID of the Company group role in the form of an integer
+
+### Delete company group role [DELETE]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company Group Role)
+
+
+# Company Groups Role [/api/v2/companies/{company_id}/group/{group}/company-roles]
+
+    Return AppsCo Company group roles for currently logged in user.
 
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
@@ -2244,7 +2263,6 @@ Share AppsCo account.
 + Response 200 (application/json)
     + Attributes
         + contacts (array[])
-        + meta (Paging)
 
 
 # Company Contact [/api/v2/companies/{company_id}/group/{group}/contacts/{contact}]
@@ -2858,6 +2876,7 @@ Share AppsCo account.
 
 ## Create Company Response (object)
 + id (number)
++ uuid 
 + `dashboard_roles` (array)
 + email 
 + timezone
@@ -3374,5 +3393,57 @@ Share AppsCo account.
     + applications
     + log
     + groups
+    
+## Company Role Account (object)
++ id (number)
++ uuid 
++ `dashboard_roles` (array)
++ email 
++ timezone
++ country 
++ `created_at` (DateTime Model)
++ name
++ enabled (boolean)
++ `first_name`
++ `last_name`
++ gender
++ `last_login` (DateTime Model)
++ locale
++ phone
++ `picture_url`
++ username
++ roles (Dashboard Roles, fixed-type)
++ `display_name`
++ `native_company`
++ `personal_dashboard_allowed` (boolean)
++ `user_allowed_to_create_company` (boolean)
++ `profile_options` (object)
+    + public (boolean)
++ partner (boolean)
++ companies (object)
+    + company (array[Company])
+    + icons 
+    + company_admin (boolean)
++ `org_units` (OrgUnits)
++ meta (object)
+    + share
++ self
 
+
+## Company Group Role (object)
++ account (Company Role Account)
++ company (Company)
++ roles (Dashboard Roles, fixed-type)
++ alias (number)
++ security 
+    + `application_score` (number)
+    + `two_factor` (boolean)
++ group  (array[])
++ `org_units` (array[OrgUnits])
++ self
++ meta
+    + log
+    + applications
+    + groups
+    
 ## Directory Role (object)
