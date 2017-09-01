@@ -2616,6 +2616,25 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Customer Licences)
+    
+
+# Customer Exists [/api/v2/partners/{partner}/customers/exists]
+
+    Check if AppsCo customer exist.
+
++ Parameters
+    + partner - ID of the partner in the form of an integer
+
+### Check if customer exists [GET]
++ Request
+    + Attributes
+        + `form[name]'
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Company Contacts)
    
 
 # Data Structures
