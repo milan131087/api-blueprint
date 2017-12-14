@@ -1600,6 +1600,18 @@ Share AppsCo account.
 + Response 200 (application/json)
     + Attributes 
         + `integration_active` (Directory Integrations Active)
+        
+### Update active company integration [PUT]
++ Request
+    + Attributes ()
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes 
+        + `integration_active` (Directory Integrations Active)
+
 
 ### Remove active company integration [DELETE]
 + Request
@@ -1650,6 +1662,127 @@ Share AppsCo account.
     + Attributes 
         + `psos` (array[PSO])
 
+
+# Active Integration Recipes [/api/v2/companies/{company_id}/integration/{integration}/integration-recipes]
+
+    Return active integration recipes for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `integration`: 5 (number) - ID of the Company active integration in the form of an integer
+
+### Return integration recipes [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Integration Recipes)
+    
+### Create integration recipe [POST]
++ Request
+    + Attributes (Setup Integration Recipes)
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Single Integration Recipe)
+
+
+### Update integration recipe [PATCH]
++ Request
+    + Attributes (Setup Integration Recipes)
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Single Integration Recipe)
+    
+### Remove integration recipe [DELETE]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Single Integration Recipe)
+
+
+# Single Active Integration Recipe [/api/v2/companies/{company_id}/integration/{integration}/integration-recipes/{recipe}]
+
+    Return active integration recipes for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `integration`: 5 (number) - ID of the Company active integration in the form of an integer
+    + `recipe`: dc181a78-6c88-4706-a5db-ad7d01c7d860 (string) - ID of the Company active integration recipe in the form of an integer
+
+### Return single integration recipe [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Single Integration Recipe)
+
+# Single Active Integration Recipe Run [/api/v2/companies/{company_id}/integration/{integration}/integration-recipes/{recipe}/run]
+
+    Return active integration recipes run for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `integration`: 5 (number) - ID of the Company active integration in the form of an integer
+    + `recipe`: dc181a78-6c88-4706-a5db-ad7d01c7d860 (string) - ID of the Company active integration recipe in the form of an integer
+
+### Run single integration recipe [POST]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes 
+        + array[Company Role Account]
+
+
+# Active Integration Web Hooks [/api/v2/companies/{company_id}/integration/{integration}/web-hooks]
+
+    Return active integration web hooks for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `integration`: 5 (number) - ID of the Company active integration in the form of an integer
+
+### Retrive integration web hooks [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Integration Web Hooks)
+
+# Single Active Integration Web Hook [/api/v2/companies/{company_id}/integration/{integration}/web-hooks/{webHook}]
+
+    Return active integration web hooks for currently logged in user.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `integration`: 5 (number) - ID of the Company active integration in the form of an integer
+    + `webHook`: 06ccf465-8b63-427f-9821-2b525cf9e011 (number) - ID of the Company active integration web hook in the form of an integer
+
+### Retrive integration web hooks [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Single Integration Web Hook)
 
  
 # Company Directory Invitation [/api/v2/companies/{company_id}/invitation]
@@ -3828,3 +3961,38 @@ Share AppsCo account.
 + value
 + conditions (array[])
 + params (array[])
+
+## Integration Recipes (object)
++ `integration-recipes` (array[])
++ meta (Paging)
+
+## Single Integration Recipe (object)
++ name
++ fromMethod
++ fromPSO
++ fromCondition (array[])
++ toMethod
++ toPSO
++ toField (array[])
++ active (boolean)
++ integration
++ self
+
+## Setup Integration Recipes (object)
++ `integration_recipe[name]`
++ `integration_recipe[fromMethod]`
++ `integration_recipe[fromPSO]`
++ `integration_recipe[toMethod]`
++ `integration_recipe[toPSO]`
++ `integration_recipe[active]`
+
+## Integration Web Hooks (object)
++ `web_hooks` (array[])
++ meta (Paging)
+
+## Single Integration Web Hook (object)
++ title
++ action": "add",
+"alias": "06ccf465-8b63-427f-9821-2b525cf9e011",
+"fromMethod": "from_added",
+"self
