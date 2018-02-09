@@ -6,16 +6,16 @@ HOST: https://appsco.com/
 AppsCo helps you securely manage all your private applications access and digital confidential information from any device.
 
 ## How to use AppsCo api
-    
+
 Appsco API supports [OAuth protocol](https://oauth.net/2/).
 OAuth Request code in order to retrieve token for loggedin user.
 Use client id and scope in order to request equivalent token.
 Redirect uri can be used for redirect response.
 System will return code which you can later use to retrieve access_token.
-    
+
 
 # Dashboard
-    
+
 Dashboard represents holder for application instances. Its content will be presented to user.
 User can have only one dashboard, but many dashboards can be shared to user.
 Sharing a dashboard is creating specific role for that user. This role is used to log all user interactions
@@ -43,7 +43,7 @@ Supported authentication methods
 
 Application is an instance of application template and is further used for configuring credentials.
 Application is used to store all user interactions with the resource credentials, login user, share credentials with other users.
-Shared Application represents instance of application that is assigned to the user. 
+Shared Application represents instance of application that is assigned to the user.
 
 
 # Application instance (Application Icon)
@@ -103,7 +103,7 @@ If application is removed all coresponding application icons will be also remove
 
 # Check Login [/api/v2/login_check]
 
-Login check. 
+Login check.
 
 ### Login check [POST]
 
@@ -129,9 +129,9 @@ To retrieve token use code and basic authentication using your app credentials (
     + Attributes (object)
         + code: 404oookk4ooccgsws2pxjq4rkeccg0co0wsk8 (string)
     + Headers
-    
+
                 Authorization: Basic base64
-                    
+
 + Response  200 (application/json)
 
     + Attributes (Token)
@@ -365,7 +365,7 @@ This call will also log the user changes for the Resource.
 
 Return AppsCo user account information.
 
-### Retrive user account information [GET]
+### Retrieve user account information [GET]
 + Request
     + Headers
 
@@ -441,7 +441,7 @@ Returns AppsCo account application instances of currently logged in user, regard
     + Attributes
         + icons (array[string])
         + meta (Paging)
-        
+
 # Resource Instances Personal [/api/v2/me/icons/personal]
 
 Returns AppsCo account resource personal instances/icons currently logged in user
@@ -779,7 +779,7 @@ Return AppsCo resource subscribers for a currently loged user.
 
 + Response  200 (application/json)
     + Attributes (Response App Model)
-        
+
 
 # Notifications [/api/v2/notifications]
 
@@ -860,7 +860,7 @@ Share AppsCo account.
     + Attributes
         + companies (array[string])
         + meta (Paging)
-        
+
 
 # Create Company  [/api/v2/company]
 
@@ -940,7 +940,7 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Company Application)
-    
+
 
 
 
@@ -1010,7 +1010,7 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (OrgUnit Delete Response)
-    
+
 
 # Company OrgUnit Resources [/api/v2/companies/{company_id}/org-units/{orgunit_id}/applications]
 
@@ -1167,7 +1167,7 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Company PK)
-    
+
 # Company Billing Subscription [/api/v2/companies/{company_id}/billing/subscription]
 
     Return AppsCo Company subscription information for currently logged in user.
@@ -1203,7 +1203,7 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Company Subscription)
-    
+
 # Company Billing Invoice List [/api/v2/companies/{company_id}/billing/invoice/list]
 
     Return AppsCo Company inovoice list information for currently logged in user.
@@ -1244,7 +1244,7 @@ Share AppsCo account.
 
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
-    + invoiceId: in_1AAEHWJBp3ytiq1AvWN 
+    + invoiceId: in_1AAEHWJBp3ytiq1AvWN
 
 
 ### Send billing invoice [POST]
@@ -1254,7 +1254,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    
+
         []
 
 # Company Log Events [/api/v2/companies/{company_id}/log/events]
@@ -1307,7 +1307,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + `company_roles` (array[])
         + meta (Paging)
 
@@ -1319,7 +1319,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + `company_roles` (array[])
         + meta (Paging)
 
@@ -1348,7 +1348,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + `company_roles` (array[])
         + meta (Paging)
 
@@ -1369,7 +1369,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + `applications` (array[])
         + meta (Paging)
 
@@ -1443,7 +1443,7 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Enabled Response)
-    
+
 ### Reset two factor authentication [DELETE]
 + Request
     + Headers
@@ -1452,8 +1452,8 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Role Success Response)
-    
-    
+
+
 
 # Company Directory Role Import [/api/v2/companies/{company_id}/directory/roles/import]
 
@@ -1492,7 +1492,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + log (array[Directory Log], fixed)
 
 
@@ -1530,7 +1530,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + available_integrations (array[Directory Integrations Available])
         + meta (Paging)
 
@@ -1560,7 +1560,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + authorization_url
 
 
@@ -1578,7 +1578,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + active_integrations (array[Directory Integrations Active])
         + meta (Paging)
 
@@ -1598,9 +1598,9 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + `integration_active` (Directory Integrations Active)
-        
+
 ### Update active company integration [PUT]
 + Request
     + Attributes ()
@@ -1609,7 +1609,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + `integration_active` (Directory Integrations Active)
 
 
@@ -1620,11 +1620,11 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
      + `integration_active` (Directory Integrations Active)
-     
-     
-     
+
+
+
 # PSO Active Integration  [/api/v2/companies/{company_id}/integrations/active/{integration}/pso]
 
     Return active Company integration PSO for currently logged in user.
@@ -1640,7 +1640,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + `psos` (array[PSO])
 
 
@@ -1659,7 +1659,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + `psos` (array[PSO])
 
 
@@ -1679,7 +1679,7 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Integration Recipes)
-    
+
 ### Create integration recipe [POST]
 + Request
     + Attributes (Setup Integration Recipes)
@@ -1700,7 +1700,7 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Single Integration Recipe)
-    
+
 ### Remove integration recipe [DELETE]
 + Request
     + Headers
@@ -1745,7 +1745,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + array[Company Role Account]
 
 
@@ -1757,7 +1757,7 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + `integration`: 5 (number) - ID of the Company active integration in the form of an integer
 
-### Retrive integration web hooks [GET]
+### Retrieve integration web hooks [GET]
 + Request
     + Headers
 
@@ -1775,7 +1775,7 @@ Share AppsCo account.
     + `integration`: 5 (number) - ID of the Company active integration in the form of an integer
     + `webHook`: 06ccf465-8b63-427f-9821-2b525cf9e011 (number) - ID of the Company active integration web hook in the form of an integer
 
-### Retrive integration web hooks [GET]
+### Retrieve integration web hooks [GET]
 + Request
     + Headers
 
@@ -1784,7 +1784,7 @@ Share AppsCo account.
 + Response 200 (application/json)
     + Attributes (Single Integration Web Hook)
 
- 
+
 # Company Directory Invitation [/api/v2/companies/{company_id}/invitation]
 
     Return AppsCo Company invitations for currently logged in user.
@@ -1799,7 +1799,7 @@ Share AppsCo account.
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + invitations (array[])
         + meta (Paging)
 
@@ -1812,7 +1812,7 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Create Company Invitation)
-        
+
 
 
 # Company Directory Resend Invitation [/api/v2/companies/{company_id}/invitation/{invitation}/resend]
@@ -1907,7 +1907,7 @@ Share AppsCo account.
     + Headers
 
             Authorization: token absdef12345
-            
+
     + Body
 
             -----WebKitFormBoundary7Lk1ieut0jQaBl3L
@@ -1927,7 +1927,7 @@ Share AppsCo account.
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
 
-### Retrive company signup [GET]
+### Retrieve company signup [GET]
 + Request
     + Headers
 
@@ -1981,7 +1981,7 @@ Share AppsCo account.
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
 
-### Retrive company labels [GET]
+### Retrieve company labels [GET]
 + Request
     + Headers
 
@@ -2009,8 +2009,8 @@ Share AppsCo account.
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + label - ID of the Company label
-    
-### Retrive company label [GET]
+
+### Retrieve company label [GET]
 + Request
     + Headers
 
@@ -2038,8 +2038,8 @@ Share AppsCo account.
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + label - ID of the Company label
-    
-### Retrive company label company roles [GET]
+
+### Retrieve company label company roles [GET]
 + Request
     + Headers
 
@@ -2058,7 +2058,7 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + label - ID of the Company label
     + companyRole - ID of the Company role
-    
+
 ### Detach company label company role [DELETE]
 + Request
     + Headers
@@ -2076,8 +2076,8 @@ Share AppsCo account.
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + label - ID of the Company label
-    
-### Retrive company label company resources [GET]
+
+### Retrieve company label company resources [GET]
 + Request
     + Headers
 
@@ -2097,7 +2097,7 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + label - ID of the Company label
     + application - ID of the Company resource
-    
+
 ### Detach company label company resource [DELETE]
 + Request
     + Headers
@@ -2112,12 +2112,12 @@ Share AppsCo account.
 
 # Company Statistics Two Factor [/api/v2/companies/{company_id}/statistics/twofa]
 
-    Return AppsCo label company statistics for two factor. 
+    Return AppsCo label company statistics for two factor.
 
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
 
-### Retrive company two factor statistics [GET]
+### Retrieve company two factor statistics [GET]
 + Request
     + Headers
 
@@ -2129,12 +2129,12 @@ Share AppsCo account.
 
 # Company Statistics Licences [/api/v2/companies/{company_id}/statistics/licences]
 
-    Return AppsCo label company statistics licences. 
+    Return AppsCo label company statistics licences.
 
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
 
-### Retrive company licences [GET]
+### Retrieve company licences [GET]
 + Request
     + Headers
 
@@ -2146,12 +2146,12 @@ Share AppsCo account.
 
 # Company Statistics User Password Scores [/api/v2/companies/{company_id}/statistics/user-password-scores]
 
-    Return AppsCo label company statistics user password scores. 
+    Return AppsCo label company statistics user password scores.
 
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
 
-### Retrive company user password scores [GET]
+### Retrieve company user password scores [GET]
 + Request
     + Headers
 
@@ -2168,7 +2168,7 @@ Share AppsCo account.
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
 
-### Retrive company contacts [GET]
+### Retrieve company contacts [GET]
 + Request
     + Headers
 
@@ -2198,7 +2198,7 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + contact - ID of the Company in the form of an integer
 
-### Retrive company contact [GET]
+### Retrieve company contact [GET]
 + Request
     + Headers
 
@@ -2242,14 +2242,14 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + contact - ID of the Company in the form of an integer
 
-### Retrive company contact [GET]
+### Retrieve company contact [GET]
 + Request
     + Headers
 
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + applications (array[])
         + meta (Paging)
 
@@ -2261,7 +2261,7 @@ Share AppsCo account.
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
 
-### Retrive company contact [POST]
+### Retrieve company contact [POST]
 + Request
     + Headers
 
@@ -2269,11 +2269,11 @@ Share AppsCo account.
 
     + Body
 
-            ------WebKitFormBoundaryWv7iqlq6qDMpd3WH 
-                Content-Disposition: form-data; name="file"; filename="example_import.csv" 
-                Content-Type: application/octet-stream 
+            ------WebKitFormBoundaryWv7iqlq6qDMpd3WH
+                Content-Disposition: form-data; name="file"; filename="example_import.csv"
+                Content-Type: application/octet-stream
             ------WebKitFormBoundaryWv7iqlq6qDMpd3WH--
-            
+
 + Response 200 (application/json)
     + Attributes (Contacts Import)
 
@@ -2287,7 +2287,7 @@ Share AppsCo account.
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
 
-### Retrive company groups [GET]
+### Retrieve company groups [GET]
 + Request
     + Headers
 
@@ -2317,7 +2317,7 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + group - ID of the Company group in the form of an integer
 
-### Retrive company group [GET]
+### Retrieve company group [GET]
 + Request
     + Headers
 
@@ -2363,7 +2363,7 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + group - ID of the Company group in the form of an integer
 
-### Retrive company groups roles [GET]
+### Retrieve company groups roles [GET]
 + Request
     + Headers
 
@@ -2383,7 +2383,7 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + group - ID of the Company group in the form of an integer
 
-### Retrive company groups contacts [GET]
+### Retrieve company groups contacts [GET]
 + Request
     + Headers
 
@@ -2420,7 +2420,7 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + group - ID of the Company group in the form of an integer
 
-### Retrive company groups applications [GET]
+### Retrieve company groups applications [GET]
 + Request
     + Headers
 
@@ -2445,10 +2445,10 @@ Share AppsCo account.
     + Headers
 
             Authorization: token absdef12345
-            
+
 + Response 200 (application/json)
     + Attributes (Company Application)
-    
+
 
 # Company Contact Groups  [/api/v2/companies/{company_id}/groups/contact/{contact}/groups]
 
@@ -2458,7 +2458,7 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + contact - ID of the Company contact in the form of an integer
 
-### Retrive company contact groups [GET]
+### Retrieve company contact groups [GET]
 + Request
     + Headers
 
@@ -2477,7 +2477,7 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + companyRole - ID of the Company contact in the form of an integer
 
-### Retrive company roles groups [GET]
+### Retrieve company roles groups [GET]
 + Request
     + Headers
 
@@ -2488,7 +2488,7 @@ Share AppsCo account.
         + company_groups (array[])
         + meta (Paging)
 
-    
+
 # Company Applications Groups  [/api/v2/companies/{company_id}/groups/application/{application}/groups]
 
     Return AppsCo Company application groups for currently logged in user.
@@ -2497,7 +2497,7 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + application - ID of the Company contact in the form of an integer
 
-### Retrive company application groups [GET]
+### Retrieve company application groups [GET]
 + Request
     + Headers
 
@@ -2507,17 +2507,17 @@ Share AppsCo account.
     + Attributes
         + company_groups (array[])
         + meta (Paging)
-        
 
 
-# Company Oauth Applications [/api/v2/companies/{company_id}/ouath/applications]
+
+# Company Oauth Applications [/api/v2/companies/{company_id}/oauth/applications]
 
     Return AppsCo Company oauth applications.
 
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
 
-### Retrive company oauth applications [GET]
+### Retrieve company oauth applications [GET]
 + Request
     + Headers
 
@@ -2537,9 +2537,29 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Oauth Model)
-        
 
-# Single Oauth Application [/api/v2/companies/{company_id}/ouath/applications/{application}]
+# Company Oauth Authorizations Count [/api/v2/companies/{company_id}/oauth/applications/{application}/authorizations-count]
+
+    Retrieve AppsCo Company oauth authorizations count.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `application`: 16 (number) - ID of the Company oauth application in the form of an integer
+
+
+### Retrieve company oauth authorizations count [GET]
++ Request
+    + Headers
+
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes
+        + authorizations_count (number)
+
+
+
+# Single Oauth Application [/api/v2/companies/{company_id}/oauth/applications/{application}]
 
     Return AppsCo single company oauth applications.
 
@@ -2547,7 +2567,7 @@ Share AppsCo account.
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
     + `application`: 16 (number) - ID of the Company oauth application in the form of an integer
 
-### Retrive oauth application [GET]
+### Retrieve oauth application [GET]
 + Request
     + Headers
 
@@ -2564,11 +2584,21 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Oauth Model)
-    
 
-# Oauth Application Certificate [/api/v2/companies/{company_id}/ouath/applications/{application}/certificate]
+### Update company oauth application [PUT]
++ Request
+    + Attributes (Setup Oauth)
+    + Headers
 
-    Return AppsCo Company oauth application certificate.
+            Authorization: token absdef12345
+
++ Response 200 (application/json)
+    + Attributes (Oauth Model)
+
+
+# Oauth Application Certificate [/api/v2/companies/{company_id}/oauth/applications/{application}/certificates]
+
+    Retrieve AppsCo Company oauth application certificate.
 
 + Parameters
     + `company_id`: 16 (number) - ID of the Company in the form of an integer
@@ -2584,17 +2614,28 @@ Share AppsCo account.
 + Response 200 (application/json)
     + Attributes (Certificate Model)
 
-### Retrive oauth application certificate [GET]
+
+
+### Retrieve oauth application certificate [GET]
 + Request
     + Headers
 
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + certificates (array[])
         + meta (Paging)
-        
+
+# Remove Oauth Application Certificate [/api/v2/companies/{company_id}/oauth/applications/{application}/certificates/{certificate}]
+
+    Remove AppsCo Company oauth application certificate.
+
++ Parameters
+    + `company_id`: 16 (number) - ID of the Company in the form of an integer
+    + `application`: 16 (number) - ID of the Company oauth application in the form of an integer
+    + `certificate`: 16 (number) - ID of the Company oauth certificate in the form of an integer
+
 ### Remove oauth application certificate [DELETE]
 + Request
     + Headers
@@ -2612,7 +2653,7 @@ Share AppsCo account.
 + Parameters
     + partner - ID of the partner in the form of an integer
 
-### Retrive customers [GET]
+### Retrieve customers [GET]
 + Request
     + Headers
 
@@ -2622,7 +2663,7 @@ Share AppsCo account.
     + Attributes
         + customers (array[])
         + meta (Paging)
-        
+
 ### Create customer [POST]
 + Request
     + Attributes (Setup Customer)
@@ -2632,18 +2673,18 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Customer)
-    
+
 ### Delete customer [DELETE]
 + Request
     + Headers
 
             Authorization: token absdef12345
-            
+
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + customers(array[Customer])
-          
- 
+
+
 
 # Customer [/api/v2/partners/{partner}/customers/{customer}]
 
@@ -2653,7 +2694,7 @@ Share AppsCo account.
     + partner - ID of the partner in the form of an integer
     + customer - ID of the customer in the form of an integer
 
-### Retrive customer [GET]
+### Retrieve customer [GET]
 + Request
     + Headers
 
@@ -2661,16 +2702,16 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Customer)
-       
+
 ### Delete customer [DELETE]
 + Request
     + Headers
 
             Authorization: token absdef12345
-            
+
 + Response 200 (application/json)
     + Attributes (Customer)
-          
+
 # Customer Log [/api/v2/partners/{partner}/customers/{customer}/log]
 
     Return AppsCo customers log.
@@ -2705,7 +2746,7 @@ Share AppsCo account.
 + Response 200 (application/json)
     + Attributes
 
-        
+
 # Import Customers [/api/v2/partners/{partner}/customers/import]
 
     Import AppsCo customers for partner.
@@ -2718,18 +2759,18 @@ Share AppsCo account.
     + Headers
 
             Authorization: token absdef12345
-    
+
     + Body
 
                 ------WebKitFormBoundarycPBUpzvu7THL8P5X
                 Content-Disposition: form-data; name="file"; filename="example_import_customers.csv"
                 Content-Type: text/csv
-                
+
                 ------WebKitFormBoundarycPBUpzvu7THL8P5X--
 
 + Response 200 (application/json)
     + Attributes (Import Customers)
-    
+
 
 # Import Resources [/api/v2/partners/{partner}/customers/import-resources]
 
@@ -2743,14 +2784,14 @@ Share AppsCo account.
     + Headers
 
             Authorization: token absdef12345
-    
+
     + Body
-    
+
             ------WebKitFormBoundaryKDWVhQoUOUVYrxBo
             Content-Disposition: form-data; name="file"; filename="example_customer_resource_import.csv"
             Content-Type: text/csv
-            
-            
+
+
             ------WebKitFormBoundaryKDWVhQoUOUVYrxBo--
 
 + Response 200 (application/json)
@@ -2765,38 +2806,38 @@ Share AppsCo account.
     + partner - ID of the partner in the form of an integer
     + customer - ID of the customer in the form of an integer
 
-### Retrive customer partner admins [GET]
+### Retrieve customer partner admins [GET]
 + Request
     + Headers
 
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
         + partner-admins (array[])
         + meta (Paging)
 
 ### Add customer partner admins [POST]
 + Request
-    + Attributes 
+    + Attributes
         + `company_role`
     + Headers
 
             Authorization: token absdef12345
 
 + Response 200 (application/json)
-    + Attributes 
+    + Attributes
 
 ### Delete customer partner admin [DELETE]
 + Request
     + Headers
 
             Authorization: token absdef12345
-            
+
 + Response 200 (application/json)
     + Attributes (Customer)
-       
-       
+
+
 # Single Customer Partner Admin [/api/v2/partners/{partner}/customers/{customer}/partner-admins/{partnerAdmin}]
 
     Return single AppsCo customer partner admin.
@@ -2806,7 +2847,7 @@ Share AppsCo account.
     + customer - ID of the customer in the form of an integer
     + partnerAdmin - ID of the customer in the form of an integer
 
-### Retrive customer partner admin [GET]
+### Retrieve customer partner admin [GET]
 + Request
     + Headers
 
@@ -2833,7 +2874,7 @@ Share AppsCo account.
     + partner - ID of the partner in the form of an integer
     + customer - ID of the customer in the form of an integer
 
-### Retrive customer licences [GET]
+### Retrieve customer licences [GET]
 + Request
     + Headers
 
@@ -2841,7 +2882,7 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Customer Licences)
-    
+
 
 # Customer Exists [/api/v2/partners/{partner}/customer/exists]
 
@@ -2860,7 +2901,7 @@ Share AppsCo account.
 
 + Response 200 (application/json)
     + Attributes (Company Contacts)
-   
+
 
 
 
@@ -3178,7 +3219,7 @@ Share AppsCo account.
 + `company_number` (string) - Partner phone
 + `contact_email` (string) - Parner email
 + `company_logo` (string) - Partner logo
- 
+
 ## Authorized Apps Model (object)
 + created (DateTime Model) - Date when application was created
 + scopes
@@ -3211,7 +3252,7 @@ Share AppsCo account.
 ## Response App Model (object)
 + message
 + code (number) - Response code
-          
+
 ## Meta Icons (object)
 + icons - Application icon route
 
@@ -3271,7 +3312,7 @@ Share AppsCo account.
 ## Transfer Token (object)
 + `transfer_token`
 + expiration (object)
-    + date 
+    + date
     + `timezone_type` (number)
     + timezone
 
@@ -3353,15 +3394,15 @@ Share AppsCo account.
 
 ## Model Domain
 + alias (number) - ID of domain
-+ domain 
++ domain
 + `crated_at` (DateTime Model)
 + `verified_at` (DateTime Model)
 + `verification_code` - Code for verification
 + company - Company of domain
-+ self 
++ self
 
 ## Setup Domain (object)
-+ `company_domain[domain]` 
++ `company_domain[domain]`
 
 ## Company Domains (object)
 + domains (array[string])
@@ -3370,11 +3411,11 @@ Share AppsCo account.
 
 ## Create Company Response (object)
 + id (number)
-+ uuid 
++ uuid
 + `dashboard_roles` (array)
-+ email 
++ email
 + timezone
-+ country 
++ country
 + `created_at` (DateTime Model)
 + name
 + enabled (boolean)
@@ -3393,12 +3434,12 @@ Share AppsCo account.
 + partner (boolean)
 + companies (object)
     + company (array[Company])
-    + icons 
+    + icons
     + company_admin (boolean)
 + meta (object)
     + share
     + self
-    
+
 ## Company CC (object)
 + id (number)
 + object
@@ -3457,7 +3498,7 @@ Share AppsCo account.
 
 
 ## Invoice Items (object)
-+ id 
++ id
 + quantity (number)
 + amount (number)
 + currency
@@ -3570,7 +3611,7 @@ Share AppsCo account.
     + `application_score` (number)
     + `two_factor` (boolean)
 + self
-+ meta (object) 
++ meta (object)
     + log
     + applications
 
@@ -3602,8 +3643,8 @@ Share AppsCo account.
 ## Role Notifications (object)
 + id (number)
 + body
-+ imageUrl 
-+ createdAt 
++ imageUrl
++ createdAt
 
 ## Roles Import (object)
 + total (number)
@@ -3611,11 +3652,11 @@ Share AppsCo account.
 + numberOfRoles (number)
 + numberOfFailed (number)
 + maxSubscriptionSizeReached (boolean)
-  
+
 ## Meta Log (object)
 + total (number)
 + page (number)
-+ first 
++ first
 + last
 + pages (number)
 + `per_page` (number)
@@ -3628,7 +3669,7 @@ Share AppsCo account.
     + email
     + image
 + created_at (DateTime Model)
-+ ip 
++ ip
 + `user_agent`
 + type
 + data (object)
@@ -3642,10 +3683,10 @@ Share AppsCo account.
     + application_score
     + two_factor (boolean)
 + self
-+ meta (object) 
++ meta (object)
     + log
     + applications
-    
+
 ## Directory Integrations Available (object)
 + title
 + image
@@ -3654,7 +3695,7 @@ Share AppsCo account.
 + alias (number)
 
 ## Active Integrations Domains (object)
-+ name 
++ name
 + primary (boolean)
 + synced (boolean)
 
@@ -3684,19 +3725,19 @@ Share AppsCo account.
 + meta (object)
     + create
     + upgrade
-    
+
 ## Directory Fetch Mappings (object)
 + success (boolean)
 + added (number)
 + deleted (number)
-+ count (number) 
++ count (number)
 
 ## Setup mapping (object)
 + `company_role`: https://my-dev.appsco.com/api/v2/companies/16/directory/roles/622
 
 ## Company Resend Invitation (object)
 + alias
-+ company (Company) 
++ company (Company)
 + email
 + `first_name`
 + `last_name`
@@ -3707,7 +3748,7 @@ Share AppsCo account.
 
 ## Create Company Invitation (object)
 + invitation (Company Resend Invitation)
-+ role 
++ role
 
 ## Setup Company Invitation (object)
 + `invitation[first_name]`
@@ -3717,9 +3758,9 @@ Share AppsCo account.
 ## OrgUnit Delete Response (object)
 + id (number)
 + `dashboard_roles` (array)
-+ email 
++ email
 + timezone
-+ country 
++ country
 + `created_at` (DateTime Model)
 + name
 + enabled (boolean)
@@ -3738,7 +3779,7 @@ Share AppsCo account.
 + partner (boolean)
 + companies (object)
     + company (array[Company])
-    + icons 
+    + icons
     + company_admin (boolean)
 + `org_units` (array[OrgUnits])
 + meta (object)
@@ -3771,7 +3812,7 @@ Share AppsCo account.
 + company (Company Model)
 + name
 + cratedAt (DateTime Model)
-+ meta 
++ meta
     + `company_roles` (array[])
     + applications (array[])
     + self
@@ -3788,9 +3829,9 @@ Share AppsCo account.
 ## Company User (object)
 + id (number)
 + `dashboard_roles` (array)
-+ email 
++ email
 + timezone
-+ country 
++ country
 + `created_at` (DateTime Model)
 + name
 + enabled (boolean)
@@ -3815,7 +3856,7 @@ Share AppsCo account.
 
 ## Companies Array (object)
 + company (array[Company])
-    + icons 
+    + icons
     + `company_admin`
 + meta (Meta Share)
 + self
@@ -3827,7 +3868,7 @@ Share AppsCo account.
 
 ## Company Contacts (object)
 + alias
-+ company - Company url 
++ company - Company url
 + account -  Account url
 + first_name
 + `last_name`
@@ -3837,10 +3878,10 @@ Share AppsCo account.
 + self
 + meta
     + `promote_to_user`
-    
+
 ## Company Contact (object)
 + alias
-+ company - Company url 
++ company - Company url
 + account (OrgUnit Delete Response)
 + first_name
 + `last_name`
@@ -3848,7 +3889,7 @@ Share AppsCo account.
 + email
 + createdAt (DateTime Model)
 + self
-+ meta 
++ meta
     + `promote_to_user`
     + applications
 
@@ -3859,8 +3900,8 @@ Share AppsCo account.
 + numberOfFailed (number)
 
 ## Setup Login (object)
-+ `_username` 
-+ `_password` 
++ `_username`
++ `_password`
 + `login`
 
 ## Setup Group (object)
@@ -3887,19 +3928,19 @@ Share AppsCo account.
 + groups (array[])
 + company
 + self
-+ meta 
++ meta
     + `promote_to_user`
     + applications
     + log
     + groups
-    
+
 ## Company Role Account (object)
 + id (number)
-+ uuid 
++ uuid
 + `dashboard_roles` (array)
-+ email 
++ email
 + timezone
-+ country 
++ country
 + `created_at` (DateTime Model)
 + name
 + enabled (boolean)
@@ -3921,7 +3962,7 @@ Share AppsCo account.
 + partner (boolean)
 + companies (object)
     + company (array[Company])
-    + icons 
+    + icons
     + company_admin (boolean)
 + `org_units` (OrgUnits)
 + meta (object)
@@ -3934,7 +3975,7 @@ Share AppsCo account.
 + company (Company)
 + roles (Dashboard Roles, fixed-type)
 + alias (number)
-+ security 
++ security
     + `application_score` (number)
     + `two_factor` (boolean)
 + group  (array[])
@@ -3944,7 +3985,7 @@ Share AppsCo account.
     + log
     + applications
     + groups
-    
+
 ## Customer (object)
 + alias (number)
 + name (string) - Name of company
@@ -3958,7 +3999,7 @@ Share AppsCo account.
 + `secondary_color`
 + `personal_dashboards_allowed` (boolean)
 + `user_allowed_to_create_company` (boolean)
-+ `company_uid` 
++ `company_uid`
 + `is_partner` (boolean)
 + image (string) - Image route
 + self (string) - Company route
@@ -3998,14 +4039,14 @@ Share AppsCo account.
 + numberOfSecureNotes (number)
 + numberOfFailed (number)
 
-    
+
 ## Customer Partner Admin (object)
 + id (number)
-+ uuid 
++ uuid
 + `dashboard_roles` (array)
-+ email 
++ email
 + timezone
-+ country 
++ country
 + `created_at` (DateTime Model)
 + name
 + enabled (boolean)
@@ -4027,7 +4068,7 @@ Share AppsCo account.
 + partner (boolean)
 + companies (object)
     + company (array[Company])
-    + icons 
+    + icons
     + company_admin (boolean)
 + company (Customer)
 + meta (Meta Customer Short)
